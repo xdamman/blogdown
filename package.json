@@ -11,6 +11,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "stop": "killall node",
     "start": "node server.js"
   },
   "repository": {
