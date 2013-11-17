@@ -1,8 +1,12 @@
 var express = require('express')
   , marked = require('marked')
   , fs = require('fs')
-  , utils = require('./lib/utils')
-  ;
+  , utils = require('./src/lib/utils');
+
+var server = express();
+server.config = require('./config/server');
+
+require('./config/express')(server);
 
 var posts = {}
   , routes = {}
@@ -21,7 +25,9 @@ var buildRouteForPost = function(postfile) {
     routes[path].requests++;
     routes[path].last_request = new Date;
     console.log(routes[path]);
-    res.send(posts[postfile]);
+    res.render('post', { 
+        content: posts[postfile]
+    });
   });
 };
 
@@ -32,19 +38,18 @@ var loadPost = function(postfile, cb) {
   if(!routes[path]) buildRouteForPost(postfile);
 
   console.log("Updating '"+postfile+"'");
-  fs.readFile('./posts/'+postfile, {encoding: 'utf8'}, function(err, data) {
+  fs.readFile(server.config.posts_directory+'/'+postfile, {encoding: 'utf8'}, function(err, data) {
     if(err) throw err;
     posts[postfile] = marked(data);
     if(cb) cb(posts[postfile]);
   });
 };
 
-var server = express();
 
 server.set('port',process.env.NODE_PORT || 3000);
 
-var files = fs.readdirSync("./posts");
-fs.watch("./posts", function(event, file) {
+var files = fs.readdirSync(server.config.posts_directory);
+fs.watch(server.config.posts_directory, function(event, file) {
 console.log("Event: ",event,file);
   loadPost(file);
 });

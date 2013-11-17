@@ -2,14 +2,16 @@
   "name": "xdamman-website",
   "version": "0.0.0",
   "description": "xdamman.com website",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "express": "~3.4.4",
-    "marked": "~0.2.10"
+    "marked": "~0.2.10",
+    "consolidate": "~0.9.1",
+    "hogan.js": "~2.0.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +24,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xdamman/website/issues"
-  },
-  "scripts": {
-    "start": "node index.js"
   },
   "homepage": "https://github.com/xdamman/website"
 }
