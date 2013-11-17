@@ -14,4 +14,4 @@ C'est exactement ce que Tesla Motors propose avec son Model S. Avec plus de 300k
 
 La voiture électrique a de beaux jours devant elle. Pendant que la RTBF Info titre "L'échec de la voiture électrique", la Tesla Model S est la voiture la plus vendue en Norvège toutes catégories confondues. Si les constructeurs européens ne veulent pas avoir le même destin que Nokia, ils feraient mieux de s'adapter aux nouvelles réalités plutôt que de répéter de vieux schémas de penser et croire - comme on aime le faire si souvent en Europe - que le gouvernement est la réponse à tous nos problèmes.
 
-[Publié également sur Facebook](https://www.facebook.com/xdamman/posts/10151658575431106)
+[Publié également sur Facebook](https://www.facebook.com/xdamman/posts/10151658575431106) 
