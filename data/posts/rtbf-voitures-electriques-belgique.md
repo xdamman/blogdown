@@ -1,4 +1,6 @@
-### Old way of thinking + new technology = bad recipe.
+# Old way of thinking + new technology = bad recipe.
+
+<video src="http://podvideo.prd.rtbf.be/redirect/rtbf_vod/folder-11407/copy-32/5785908.mp4" controls></video>
 
 [Ce reportage de la RTBF](http://www.rtbf.be/video/detail_l-echec-de-la-voiture-electrique?id=1869737) illustre parfaitement le problème quand on applique une vieille façon de penser à de nouvelles technologies. On pense alors que le succès de la voiture électrique dépend d’un réseau de chargeurs publics étendu. Créant ainsi un problème insurmontable de poule et d’oeuf. Suffisant pour ce journaliste d'en appeler à "l'échec de la voiture électrique". Pas si vite... 
 

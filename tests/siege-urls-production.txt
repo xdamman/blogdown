@@ -1,0 +1,5 @@
+http://96.126.98.77/home
+http://96.126.98.77/public/lib/bootstrap/dist/css/bootstrap.css
+http://96.126.98.77/public/css/main.css
+http://96.126.98.77/public/lib/requirejs/require.js
+http://96.126.98.77/public/js/main.js

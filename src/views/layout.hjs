@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Post title: </title>
+    <title>Xavier Damman's website</title>
     <link rel="stylesheet" href="/public/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/public/css/main.css" />
     <meta name="viewport" content="width=device-width" />
@@ -13,14 +13,11 @@
 
       <!-- Begin page content -->
       <div class="container">
-        {{{content}}}
+        {{>content}}
       </div>
     </div>
 
-    <div id="footer">
-      <div class="container">
-        <p class="text-muted credit">Copyleft Xavier Damman (<a href="http://twitter.com/xdamman">@xdamman</a>) - please share/edit/redistribute</p>
-      </div>
-    </div>
+    {{>footer}}
   </body>
 </html>
+

@@ -9,10 +9,10 @@ module.exports = function(server) {
     });
 
     server.set('views', __dirname + '/../src/views');
-    server.set('view engine', 'hogan.html');
+    server.set('view engine', 'hjs');
 
     var engines = require('consolidate');
-    server.engine('hogan.html', engines.hogan);
+    server.engine('hjs', engines.hogan);
 
     server.use('/public/lib', express.static(__dirname + '/../lib'));
     server.use('/public/css', express.static(__dirname + '/../src/public/css'));

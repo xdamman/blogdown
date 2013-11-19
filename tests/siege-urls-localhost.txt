@@ -1,0 +1,5 @@
+http://localhost:3000/home
+http://localhost:3000/public/lib/bootstrap/dist/css/bootstrap.css
+http://localhost:3000/public/css/main.css
+http://localhost:3000/public/lib/requirejs/require.js
+http://localhost:3000/public/js/main.js

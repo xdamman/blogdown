@@ -25,11 +25,23 @@ var buildRouteForPost = function(postfile) {
     routes[path].requests++;
     routes[path].last_request = new Date;
     console.log(routes[path]);
-    res.render('post', { 
+    res.render('layout', { 
+        partials: { content: '_post', footer: '_footer' },
         content: posts[postfile]
     });
   });
 };
+
+server.get('/', function(req, res) {
+  var posts = [
+      { title: "About", description: "Who am I? Why this website? What will you find here?", slug: "about" }
+    , { title: "RTBF", description: "My reaction (in French) about a reportage on Belgian television about electric cars not taking off in Belgium", slug: "rtbf-voitures-electriques-belgique"} 
+  ];
+  res.render('layout', {
+      partials: { content: '_home', post_item: '_post_item', footer: '_footer' }
+    , posts: posts
+  });
+});
 
 
 var loadPost = function(postfile, cb) {
