@@ -4,6 +4,7 @@
   "description": "xdamman.com website",
   "main": "server.js",
   "dependencies": {
+    "xdamman-website-content": "git://github.com/xdamman/website-content.git",
     "express": "~3.4.4",
     "marked": "~0.2.10",
     "consolidate": "~0.9.1",

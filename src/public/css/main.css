@@ -48,7 +48,8 @@ video {
 }
 
 p {
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .container .credit {

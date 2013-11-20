@@ -1,3 +1,3 @@
 module.exports = {
-  posts_directory: "./data/posts"
+  posts_directory: "./node_modules/xdamman-website-content/posts"
 }
