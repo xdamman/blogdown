@@ -13,7 +13,7 @@
   "devDependencies": {},
   "scripts": {
     "install": "bower install",
-    "stop": "sudo killall node",
+    "stop": "curl 127.0.0.1/stop",
     "start": "node server.js"
   },
   "repository": {

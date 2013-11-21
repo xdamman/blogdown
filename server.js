@@ -21,6 +21,13 @@ server.get('/', function(req, res) {
   });
 });
 
+server.get('/stop', function(req, res, next) {
+  if(req.socket.remoteAddress == "127.0.0.1")
+    process.exit();
+  else
+    return next();
+});
+
 
 var loadPartial = function(partialfile, cb) {
   if(utils.getFileExtension(partialfile) != 'md') return;
