@@ -1,0 +1,11 @@
+<div class="about">
+  <div class="media">
+    <div class="pull-left">
+      <img src="{{about.avatar}}" alt="{{about.name}}" class="media-object" />
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">About the author</h4>
+      {{{about.html}}}
+    </div>
+  </div>
+</div>

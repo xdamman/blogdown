@@ -1,36 +1,11 @@
 var express = require('express')
-  , marked = require('marked')
-  , fs = require('fs')
-  , utils = require('./src/lib/utils');
+  ;
 
 var server = express();
 server.config = require('./config/server');
+server.controllers = require('./src/controllers')(server);
 
 require('./config/express')(server);
-
-var posts = {}
-  , routes = {}
-  ;
-
-var buildRouteForPost = function(postfile) {
-  if(utils.getFileExtension(postfile) != 'md') return;
-  var filename = utils.getFileName(postfile); 
-  var path = "/"+filename;
-
-  if(routes[path]) return;
-  console.log("Setting up route "+path); 
-
-  routes[path] = { path: path, requests: 0, last_request: null };
-  server.get('/'+filename, function(req, res) {
-    routes[path].requests++;
-    routes[path].last_request = new Date;
-    console.log(routes[path]);
-    res.render('layout', { 
-        partials: { content: '_post', footer: '_footer' },
-        content: posts[postfile]
-    });
-  });
-};
 
 server.get('/', function(req, res) {
   var posts = [
@@ -38,43 +13,25 @@ server.get('/', function(req, res) {
     , { title: "RTBF", description: "My reaction (in French) about a reportage on Belgian television about electric cars not taking off in Belgium", slug: "rtbf-voitures-electriques-belgique"} 
     , { title: "The hidden power of Twitter Custom Timelines", description: "What if the Custom Timeline could open a new way to follow your interest on Twitter with more signal and less noise?", slug: "the-hidden-power-of-twitter-custom-timelines" }
   ];
+
   res.render('layout', {
-      partials: { content: '_home', post_item: '_post_item', footer: '_footer' }
-    , posts: posts
+      partials: { content: '_home', post_item: '_post_item', footer: '_footer', about: '_about' }
+    , about: server.controllers.partials.get('about')
+    , posts: posts.reverse()
   });
 });
 
 
-var loadPost = function(postfile, cb) {
-  if(utils.getFileExtension(postfile) != 'md') return;
-  var path = '/'+utils.getFileName(postfile);
-  if(!routes[path]) buildRouteForPost(postfile);
+var loadPartial = function(partialfile, cb) {
+  if(utils.getFileExtension(partialfile) != 'md') return;
 
-  console.log("Updating '"+postfile+"'");
-  fs.readFile(server.config.posts_directory+'/'+postfile, {encoding: 'utf8'}, function(err, data) {
+  fs.readFile(server.config.partials_directory+'/'+partialfile, {encoding: 'utf8'}, function(err, data) {
     if(err) throw err;
-    posts[postfile] = marked(data);
-    if(cb) cb(posts[postfile]);
+    partials[partialfile] = marked(data);
+    if(cb) cb(partials[partialfile]);
   });
 };
 
-
-server.set('port',process.env.NODE_PORT || 3000);
-
-var files = fs.readdirSync(server.config.posts_directory);
-fs.watch(server.config.posts_directory, function(event, file) {
-console.log("Event: ",event,file);
-  loadPost(file);
-});
-
-for(var i=0, len=files.length; i < len; i++) {
-  loadPost(files[i]);
-};
-
-
-server.get('/', function(req, res) {
-  res.send("Hello world");
-});
 
 server.listen(server.set('port'));
 console.log("Server listening on port "+server.set('port'));

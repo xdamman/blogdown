@@ -1,3 +1,4 @@
+{{>about}}
 {{#posts}}
   {{>post_item}}
 {{/posts}}

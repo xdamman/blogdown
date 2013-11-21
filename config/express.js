@@ -18,5 +18,6 @@ module.exports = function(server) {
     server.use('/public/css', express.static(__dirname + '/../src/public/css'));
     server.use('/public/js', express.static(__dirname + '/../src/public/js'));
 
+    server.set('port',process.env.NODE_PORT || 3000);
   });
 };

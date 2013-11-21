@@ -1,1 +1,10 @@
-{{{content}}}
+<div class="row">
+  <div class="col-md-8 col-md-push-4">
+    <div class="post">
+      {{{content}}}
+    </div>
+  </div>
+  <div class="col-md-4 col-md-pull-8 col-full-height">
+    {{>about}}
+  </div>
+</div>

@@ -14,14 +14,14 @@ body {
   min-height: 100%;
   height: auto;
  /* Negative indent footer by its height */
-  margin: 0 auto -60px;
+  margin: 0 auto -40px;
  /* Pad bottom by footer height */
-  padding: 0 0 60px;
+  padding: 0 0 40px;
 }
 
 /* Set the fixed height of the footer here */
 #footer {
-  min-height: 60px;
+  min-height: 40px;
   background-color: #f5f5f5;
 }
 
@@ -32,8 +32,8 @@ body {
 
 .container {
   width: auto;
-  max-width: 680px;
-  padding: 0 15px;
+  max-width: 960px;
+  padding: 0;
 }
 
 .list-group:first-of-type {
@@ -41,19 +41,53 @@ body {
 }
 
 
+img {
+  max-width: 100%;
+}
+
 video {
   margin: 20px 0px;
   width: 100%;
   max-width: 650px;
 }
 
-p {
-  font-size: 16px;
+h1, h2, h3, h4, p {
+  padding: 0 15px;
+}
+
+p, li {
+  font-size: 1em;
   line-height: 1.5;
 }
 
+
+.about {
+  margin:30px 15px;
+}
+
+@media (min-width:768px) {
+  .about {
+    margin-top:80px;
+  }
+}
+
+.about h1, .about h2, .about h3, .about h4 {
+  padding: 0px;
+}
+.about p {
+  padding:0px;
+  font-size: 14px;
+}
+
+.post h1 {
+  font-size: 22px;
+  margin-bottom: 22px;
+  margin-top: 33px;
+}
+
 .container .credit {
-    margin: 20px 0;
+  margin: 10px 0;
+  font-size:12px;
 }
  
 
