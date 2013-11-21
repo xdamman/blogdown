@@ -30,6 +30,7 @@ module.exports = function(server) {
       routes[path].requests++;
       routes[path].last_request = new Date;
       console.log(routes[path]);
+      res.set("Cache-Control","public, max-age=62");
       res.render('layout', { 
           partials: { content: '_post', footer: '_footer', about: '_about' },
           about: server.controllers.partials.get('about'),
