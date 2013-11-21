@@ -39,7 +39,16 @@ module.exports = {
 
       var markdown_lines = lines.slice(i);
       doc.html = marked(markdown_lines.join('\n'));
+      var matches = doc.html.match(/^<h1[^>]*>(.*)(<\/h1>)$/m,'$1');
+      if(matches && matches.length == 3) {
+        doc.title = matches[1];
+        doc.html = doc.html.replace(/^<h1[^>]*>(.*)(<\/h1>)$/m,'');
+      }
       doc.html = doc.html.replace(/^<p>(<img.*)(<\/p>)$/mg,'$1')
+
+      var stat = fs.statSync(file);
+      doc.created_at = stat.ctime;
+      doc.updated_at = stat.mtime;
     
       return cb(null, doc);
     });

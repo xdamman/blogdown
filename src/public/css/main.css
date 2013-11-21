@@ -91,6 +91,13 @@ p, li {
   font-size: 18px;
 }
 
+.post .byline {
+  padding: 0 15px;
+  margin-top: -20px;
+  margin-bottom: 15px;
+  color: #888;
+}
+
 .container .credit {
   margin: 10px 0;
   font-size:12px;
