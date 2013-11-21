@@ -22,10 +22,11 @@ server.get('/', function(req, res) {
 });
 
 server.get('/stop', function(req, res, next) {
-  if(req.socket.remoteAddress == "127.0.0.1")
+  if(req.socket.remoteAddress == "127.0.0.1") {
+    res.send("Shutting down server...");
     process.exit();
-  else
-    return next();
+  }
+  else return next();
 });
 
 
