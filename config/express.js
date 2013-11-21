@@ -14,9 +14,9 @@ module.exports = function(server) {
     var engines = require('consolidate');
     server.engine('hjs', engines.hogan);
 
-    server.use('/public/lib', express.static(__dirname + '/../lib'));
-    server.use('/public/css', express.static(__dirname + '/../src/public/css'));
-    server.use('/public/js', express.static(__dirname + '/../src/public/js'));
+    server.use('/public/lib', express.static(__dirname + '/../lib', {maxAge: 86400000}));
+    server.use('/public/css', express.static(__dirname + '/../src/public/css', {maxAge: 86400000}));
+    server.use('/public/js', express.static(__dirname + '/../src/public/js', {maxAge: 86400000}));
 
     server.set('port',process.env.NODE_PORT || 3000);
   });
