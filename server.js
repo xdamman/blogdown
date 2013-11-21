@@ -11,7 +11,7 @@ server.get('/', function(req, res) {
   var posts = [
       { title: "About", description: "Who am I? Why this website? What will you find here?", slug: "about" }
     , { title: "RTBF", description: "My reaction (in French) about a reportage on Belgian television about electric cars not taking off in Belgium", slug: "rtbf-voitures-electriques-belgique"} 
-    , { title: "The hidden power of Twitter Custom Timelines", description: "What if the Custom Timeline could open a new way to follow your interest on Twitter with more signal and less noise?", slug: "the-hidden-power-of-twitter-custom-timelines" }
+//    , { title: "The hidden power of Twitter Custom Timelines", description: "What if the Custom Timeline could open a new way to follow your interest on Twitter with more signal and less noise?", slug: "the-hidden-power-of-twitter-custom-timelines" }
   ];
 
   res.render('layout', {
