@@ -12,6 +12,7 @@ module.exports = function(server) {
     console.log("Loading '"+postfile+"'");
     utils.loadDoc(server.config.posts_directory+'/'+postfile, function(err, doc) {
       if(err) return cb(err);
+      doc.permalink = server.set("base_url") + "/" + doc.slug;
       posts[postfile] = doc; 
       if(cb) cb(doc);
     });

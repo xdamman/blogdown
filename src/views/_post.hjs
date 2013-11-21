@@ -1,10 +1,10 @@
-<div class="row">
+<div class="_post row">
   <div class="col-md-8 col-md-push-4">
     <div class="post">
       <h1 class="title">{{post.title}}</h1>
       <div class="byline">
-        <span class="twitter_username"><a href="http://twitter.com/{{about.twitter}}">{{about.twitter}}</a></span> | 
-        <span class="datetime moment">{{post.created_at}}</span>
+        <span class="twitter_username"><a href="http://twitter.com/{{about.twitter}}" data-event-name="twitter_profile" data-event-value="{{about.twitter}}" data-event-context="byline">{{about.twitter}}</a></span> | 
+        <span class="datetime moment">{{post.date}}</span>
       </div>
       {{{post.html}}}
     </div>

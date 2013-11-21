@@ -28,6 +28,7 @@
   "dependencies": {
     "bootstrap": "~3.0.2",
     "requirejs": "~2.1.9",
-    "momentjs": "~2.4.0"
+    "momentjs": "~2.4.0",
+    "requirejs-domready": "~2.0.1"
   }
 }

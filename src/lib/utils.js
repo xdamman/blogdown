@@ -52,6 +52,7 @@ module.exports = {
       var stat = fs.statSync(file);
       doc.created_at = stat.ctime;
       doc.updated_at = stat.mtime;
+      doc.date = (doc.date) ? new Date(doc.date) : doc.created_at;
     
       return cb(null, doc);
     });

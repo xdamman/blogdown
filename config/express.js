@@ -19,5 +19,6 @@ module.exports = function(server) {
     server.use('/public/js', express.static(__dirname + '/../src/public/js', {maxAge: 86400000}));
 
     server.set('port',process.env.NODE_PORT || 3000);
+    server.set('base_url','//xdamman.com');
   });
 };
