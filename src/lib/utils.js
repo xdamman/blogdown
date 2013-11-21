@@ -9,7 +9,8 @@ module.exports = {
   },
 
   getFileName: function(file) {
-    return file.substr(0,file.lastIndexOf('.'))
+    var r=file.replace(/^.*(\\|\/|\:)/, '');
+    return r.substr(0,r.lastIndexOf('.'));
   },
 
   // @PRE a markdown file with email like properties at the top
@@ -17,6 +18,7 @@ module.exports = {
   //       with also an html attribute with the output of the markdown parser
   loadDoc: function(file, cb) { 
     cb = cb || function() {};
+    var self = this;
 
     var parseAttribute = function(line) {
       var matches = line.match(/([a-zA-Z]+):\ ?(.+)/);
@@ -45,6 +47,7 @@ module.exports = {
         doc.html = doc.html.replace(/^<h1[^>]*>(.*)(<\/h1>)$/m,'');
       }
       doc.html = doc.html.replace(/^<p>(<img.*)(<\/p>)$/mg,'$1')
+      doc.slug = self.getFileName(file);
 
       var stat = fs.statSync(file);
       doc.created_at = stat.ctime;

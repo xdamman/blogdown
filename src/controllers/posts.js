@@ -34,6 +34,7 @@ module.exports = function(server) {
       res.render('layout', { 
           partials: { content: '_post', footer: '_footer', about: '_about' },
           about: server.controllers.partials.get('about'),
+          title: posts[postfile].title,
           post: posts[postfile]
       });
     });

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Xavier Damman's website</title>
+    <title>{{#title}}{{title}} - {{/title}}Xavier Damman's website</title>
     <link rel="stylesheet" href="/public/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/public/css/main.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
