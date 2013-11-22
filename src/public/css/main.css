@@ -33,7 +33,7 @@ body {
 
 .container {
   width: auto;
-  max-width: 960px;
+  max-width: 660px;
   padding: 0;
 }
 
@@ -62,15 +62,8 @@ p, li {
   line-height: 1.5;
 }
 
-
 .about {
   margin:30px 15px;
-}
-
-@media (min-width:768px) {
-  ._post .about {
-    margin-top:100px;
-  }
 }
 
 .about h1, .about h2, .about h3, .about h4 {

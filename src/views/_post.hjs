@@ -1,15 +1,11 @@
-<div class="_post row">
-  <div class="col-md-8 col-md-push-4">
-    <div class="post">
-      <h1 class="title">{{post.title}}</h1>
-      <div class="byline">
-        <span class="twitter_username"><a href="http://twitter.com/{{about.twitter}}" data-event-name="twitter_profile" data-event-value="{{about.twitter}}" data-event-context="byline">{{about.twitter}}</a></span> | 
-        <span class="datetime moment">{{post.date}}</span>
-      </div>
-      {{{post.html}}}
+<div class="_post">
+  <div class="post">
+    <h1 class="title">{{post.title}}</h1>
+    <div class="byline">
+      <span class="twitter_username"><a href="http://twitter.com/{{about.twitter}}" data-event-name="twitter_profile" data-event-value="{{about.twitter}}" data-event-context="byline">{{about.twitter}}</a></span> | 
+      <span class="datetime moment">{{post.date}}</span>
     </div>
+    {{{post.html}}}
   </div>
-  <div class="col-md-4 col-md-pull-8 col-full-height">
-    {{>about}}
-  </div>
+  {{>about}}
 </div>
