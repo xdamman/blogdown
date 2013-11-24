@@ -46,7 +46,19 @@ module.exports = {
         doc.title = matches[1];
         doc.html = doc.html.replace(/^<h1[^>]*>(.*)(<\/h1>)$/m,'');
       }
+
+      // Get lead (first paragraph after title)
+      if(doc.title && !doc.lead) {
+        var matches = doc.html.match(/^<p[^>]*>(.*)(<\/p>)$/m,'$1');
+        if(matches) {
+          doc.lead = matches[1];
+          doc.html = doc.html.replace(/^<p[^>]*>(.*)(<\/p>)$/m,'');
+        }
+      }
+
+      // Extract orphan images from their paragraph <p><img></p> -> <img>
       doc.html = doc.html.replace(/^<p>(<img.*)(<\/p>)$/mg,'$1')
+
       doc.slug = self.getFileName(file);
 
       var stat = fs.statSync(file);

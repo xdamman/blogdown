@@ -1,6 +1,6 @@
 {
   "name": "xdamman-website",
-  "main": "./src/main.js",
+  "main": "./src/public/js/main.js",
   "version": "0.0.0",
   "homepage": "https://github.com/xdamman/website",
   "authors": [
@@ -28,7 +28,6 @@
   "dependencies": {
     "bootstrap": "~3.0.2",
     "requirejs": "~2.1.9",
-    "momentjs": "~2.4.0",
     "requirejs-domready": "~2.0.1"
   }
 }

@@ -1,10 +1,11 @@
 <div class="_post">
   <div class="post">
-    <h1 class="title">{{post.title}}</h1>
+    <h1 class="title">{{{post.title}}}</h1>
     <div class="byline">
       <span class="twitter_username"><a href="http://twitter.com/{{about.twitter}}" data-event-name="twitter_profile" data-event-value="{{about.twitter}}" data-event-context="byline">{{about.twitter}}</a></span> | 
-      <span class="datetime moment">{{post.date}}</span>
+      <span class="timeago" data-date="{{post.date}}"></span>
     </div>
+    <p class="lead">{{{post.lead}}}</p>
     {{{post.html}}}
   </div>
   {{>about}}

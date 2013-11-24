@@ -64,6 +64,15 @@ module.exports = function(server) {
       return posts[slug+'.md'];
     },
   
+    latest: function(max) {
+      var posts_array = [];
+      for(var i in posts) {
+        posts_array.push(posts[i]);
+      }
+      posts_array.sort(function(a,b) { return (a.date>b.date); });
+      return posts_array.slice(0,max);
+    },
+
     reload: function(slug, cb) {
       loadPost(slug+'.md', cb);
     }

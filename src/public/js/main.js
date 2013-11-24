@@ -1,27 +1,11 @@
 ENV = (window.location.port) ? "development" : "production";
 
-require.config({
-  baseUrl: "/public/js/",
-  paths: {
-      moment: "../lib/momentjs/moment"
-    , domReady: "../lib/requirejs-domready/domReady"
-  }
-});
-
 var scripts = {
-  "production" : ["moment","domReady!"],
-  "development" : ["moment","domReady!","livereload"]
+  "production" : ["analytics","domReady!", "timeago!"],
+  "development" : ["analytics","domReady!","timeago!", "livereload"]
 };
 
-require(scripts[ENV], function(moment) {
-
-  var moments = document.getElementsByClassName("moment");
-
-  for(var i=0, len=moments.length; i<len; i++) {
-    var m = moments[i];
-    var fromNow = moment(m.innerText).fromNow();
-    m.innerHTML = fromNow;
-  }
+require(scripts[ENV], function(timeago, analytics) {
 
   var anchors = document.getElementsByTagName("a");
   for(var i=0, len=anchors.length; i<len; i++) {
