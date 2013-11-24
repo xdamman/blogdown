@@ -29,10 +29,11 @@
     "karma-cajon": "0.0.1",
     "mocha": "~1.14.0",
     "karma-mocha": "~0.1.0",
-    "karma-chai": "0.0.2"
+    "karma-chai": "0.0.2",
+    "grunt-cli": "~0.1.11"
   },
   "scripts": {
-    "install": "bower install; grunt",
+    "install": "bower install; node_modules/grunt-cli/bin/grunt",
     "stop": "curl 127.0.0.1/stop",
     "start": "node server.js"
   },
