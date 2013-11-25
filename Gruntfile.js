@@ -45,6 +45,12 @@ module.exports = function(grunt) {
           preserveLicenseComments: false
         }
       }
+    },
+    bumper: {
+      options: {
+          files: ['package.json','bower.json']
+        , pushTo: 'deploy'
+      }
     }
   });
 
@@ -53,6 +59,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-uncss');
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-requirejs');
+  grunt.loadNpmTasks('grunt-bumper');
 
   // Default task(s).
   grunt.registerTask('default', ['copy','uncss', 'processhtml','requirejs']);

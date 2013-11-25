@@ -1,6 +1,6 @@
 {
   "name": "xdamman-website",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "xdamman.com website",
   "main": "server.js",
   "dependencies": {
@@ -30,7 +30,8 @@
     "mocha": "~1.14.0",
     "karma-mocha": "~0.1.0",
     "karma-chai": "0.0.2",
-    "grunt-cli": "~0.1.11"
+    "grunt-cli": "~0.1.11",
+    "grunt-bumper": "~1.0.0"
   },
   "scripts": {
     "install": "bower install && node_modules/grunt-cli/bin/grunt",
