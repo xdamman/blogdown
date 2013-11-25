@@ -1,4 +1,6 @@
-var express = require('express');
+var express = require('express')
+  , content = require('xdamman-website-content')
+  ;
 
 module.exports = function(server) {
 
@@ -26,6 +28,7 @@ module.exports = function(server) {
     server.use('/public/lib', express.static(__dirname + '/../'+server.set('src')+'/public/lib', {maxAge: 86400000}));
     server.use('/public/css', express.static(__dirname + '/../'+server.set('src')+'/public/css', {maxAge: 86400000}));
     server.use('/public/js', express.static(__dirname + '/../'+server.set('src')+'/public/js', {maxAge: 86400000}));
+    server.use('/public/img', express.static(content.getPath('img'), {maxAge: 86400000}));
 
     server.set('port',process.env.NODE_PORT || 3000);
     server.set('base_url','//xdamman.com');
