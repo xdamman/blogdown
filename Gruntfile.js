@@ -49,7 +49,8 @@ module.exports = function(grunt) {
     bumper: {
       options: {
           files: ['package.json','bower.json']
-        , pushTo: 'deploy master'
+        , push: { releaseBranch: "master" }
+        , pushTo: 'deploy'
       }
     }
   });
