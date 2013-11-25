@@ -49,7 +49,6 @@ module.exports = function(grunt) {
     bumper: {
       options: {
           files: ['package.json','bower.json']
-        , push: { releaseBranch: "master" }
         , pushTo: 'deploy'
       }
     },
@@ -76,5 +75,6 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['copy','uncss','requirejs','processhtml','asset_cachebuster']);
+  grunt.registerTask('deploy', ['bumper']);
 
 };
