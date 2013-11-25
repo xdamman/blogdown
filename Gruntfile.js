@@ -52,6 +52,17 @@ module.exports = function(grunt) {
         , push: { releaseBranch: "master" }
         , pushTo: 'deploy'
       }
+    },
+    asset_cachebuster: {
+      options: {
+          buster: "<%= pkg.version %>"
+        , htmlExtension: "hjs"
+      },
+      dist: {
+        files: {
+          'dist/views/layout.hjs':['dist/views/layout.hjs']
+        }
+      }
     }
   });
 
@@ -61,8 +72,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-requirejs');
   grunt.loadNpmTasks('grunt-bumper');
+  grunt.loadNpmTasks('grunt-asset-cachebuster');
 
   // Default task(s).
-  grunt.registerTask('default', ['copy','uncss', 'processhtml','requirejs']);
+  grunt.registerTask('default', ['copy','uncss','requirejs','processhtml','asset_cachebuster']);
 
 };

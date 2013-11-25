@@ -31,7 +31,8 @@
     "karma-mocha": "~0.1.0",
     "karma-chai": "0.0.2",
     "grunt-cli": "~0.1.11",
-    "grunt-bumper": "~1.0.0"
+    "grunt-bumper": "~1.0.0",
+    "grunt-asset-cachebuster": "~0.1.1"
   },
   "scripts": {
     "install": "bower install && node_modules/grunt-cli/bin/grunt",
