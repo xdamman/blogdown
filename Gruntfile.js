@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     bumper: {
       options: {
           files: ['package.json','bower.json']
-        , pushTo: 'deploy/master'
+        , pushTo: 'deploy master'
       }
     }
   });
