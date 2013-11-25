@@ -34,6 +34,7 @@
   },
   "scripts": {
     "install": "bower install && node_modules/grunt-cli/bin/grunt",
+    "test": "karma run",
     "stop": "curl 127.0.0.1/stop",
     "start": "node server.js"
   },

@@ -47,8 +47,6 @@ describe("timeago", function() {
 
     expect(span.innerText).to.equal("a month ago");
 
-    console.log(span.innerHTML);
-
   });
 
 });
