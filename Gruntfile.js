@@ -50,6 +50,7 @@ module.exports = function(grunt) {
       options: {
           files: ['package.json','bower.json']
         , pushTo: 'deploy'
+        , runTasks: false
       }
     },
     asset_cachebuster: {
@@ -75,6 +76,6 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['copy','uncss','requirejs','processhtml','asset_cachebuster']);
-  grunt.registerTask('deploy', ['bumper']);
+  grunt.registerTask('deploy', ['default','bumper']);
 
 };
