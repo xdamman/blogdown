@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       dist: {
         files: [
            { cwd: 'src/', src: '**', dest: 'dist/', expand: true, filter: function(filepath) { return (!(filepath.match(/public\/css\//) || filepath.match(/public\/js\//))); } }
-         // , { cwd: 'lib/bootstrap/dist/css/', src: 'bootstrap.css', dest: 'dist/public/css/', expand: true }
+         , { cwd: 'src/public/lib/bootstrap/dist/css/', src: 'bootstrap.css', dest: 'src/public/css/', expand: true }
         ]
       }
     },
@@ -20,8 +20,9 @@ module.exports = function(grunt) {
         },
         options: {
             compress:true
+          , csspath: "../"
           , ignore: ["p","h1","h2","h3","h4","ul","li",".about p"]
-          , stylesheets: ['src/public/lib/bootstrap/dist/css/bootstrap.css','src/public/css/main.css']
+          //, stylesheets: ['src/public/lib/bootstrap/dist/css/bootstrap.css','src/public/css/main.css']
         }
     },
     processhtml: {
@@ -38,7 +39,7 @@ module.exports = function(grunt) {
           name: "main",
           baseUrl: "src/public/js",
           mainConfigFile: "src/public/js/requirejs.conf.js",
-          include: ['timeago','analytics', 'domReady', 'livereload'],
+          include: ['timeago','analytics', 'domReady'],
           out: "dist/public/js/optimized.min.js",
           optimize: 'uglify2',
           preserveLicenseComments: false
