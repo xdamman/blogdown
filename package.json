@@ -30,11 +30,12 @@
     "mocha": "~1.14.0",
     "karma-mocha": "~0.1.0",
     "karma-chai": "0.0.2",
-    "grunt-cli": "~0.1.11"
+    "grunt-cli": "~0.1.11",
+    "bower": "~1.2.7"
   },
   "scripts": {
-    "install": "bower install && node_modules/grunt-cli/bin/grunt",
-    "test": "karma run",
+    "install": "node_modules/bower/bin/bower install && node_modules/grunt-cli/bin/grunt",
+    "test": "node_modules/karma/bin/karma run",
     "stop": "curl 127.0.0.1/stop",
     "start": "node server.js"
   },
