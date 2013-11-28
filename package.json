@@ -1,7 +1,7 @@
 {
-  "name": "xdamman-website",
+  "name": "personal-website",
   "version": "0.0.1",
-  "description": "xdamman.com website",
+  "description": "A simple website using markdown files hosted on github for content.",
   "main": "server.js",
   "dependencies": {
     "xdamman-website-content": "git://github.com/xdamman/website-content.git",

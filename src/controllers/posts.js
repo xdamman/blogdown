@@ -69,7 +69,7 @@ module.exports = function(server) {
       for(var i in posts) {
         posts_array.push(posts[i]);
       }
-      posts_array.sort(function(a,b) { return (a.date>b.date); });
+      posts_array.sort(function(a,b) { return (a.date<b.date); });
       return posts_array.slice(0,max);
     },
 
