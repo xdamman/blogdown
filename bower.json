@@ -1,7 +1,7 @@
 {
   "name": "xdamman-website",
   "main": "./src/public/js/main.js",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "homepage": "https://github.com/xdamman/website",
   "authors": [
     "Xavier Damman <xdamman@gmail.com>"
