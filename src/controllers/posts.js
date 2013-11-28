@@ -14,6 +14,7 @@ module.exports = function(server) {
       if(err) return cb(err);
       doc.permalink = server.set("base_url") + "/" + doc.slug;
       posts[postfile] = doc; 
+      buildRouteForPost(postfile);
       if(cb) cb(doc);
     });
   };
@@ -51,7 +52,6 @@ module.exports = function(server) {
 
     for(var i=0, len=files.length; i < len; i++) {
       loadPost(files[i]);
-      buildRouteForPost(files[i]);
     };
 
   };
@@ -70,7 +70,6 @@ module.exports = function(server) {
         posts_array.push(posts[i]);
       }
       posts_array = posts_array.sort(function(a,b) { return (a.date<b.date); });
-      console.log(posts_array[0].title);
       return posts_array.slice(0,max);
     },
 

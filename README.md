@@ -10,7 +10,7 @@ The philosophy is to deliver highly optimized pages:
 As a result, all the pages delivered have more than 95/100 on desktop and mobile on [Google PageSpeed Insights](http://developers.google.com/speed/pagespeed/insights/?url=xdamman.com%2Fthe-hidden-power-of-twitter-custom-timelines&tab=mobile).
 
 ## Features
-- Posts are markdown files (can be hosted in a [github repository](https://github.com/xdamman/website-content/blob/master/posts/the-hidden-power-of-twitter-custom-timelines.md))
+- Posts are [markdown](http://en.wikipedia.org/wiki/Markdown) files (can be hosted in a [github repository](https://github.com/xdamman/website-content/blob/master/posts/the-hidden-power-of-twitter-custom-timelines.md))
 - Fully responsive using [Bootsrap v3](http://getbootstrap.com)
 - Minimalistic design focused on [content consumption](http://xdamman.com/the-hidden-power-of-twitter-custom-timelines)
 
@@ -43,6 +43,6 @@ There are 3 subdirectories:
 
 ## Running on production
 
-To run on production, you will need to run it as `sudo` to bind it to the port 80. Otherwise you can keep it on any other custom port and put Varnish or Nginx in front (I'm personally running it directly on port 80 and I use [cloudflare](http://cloudflare.com) for caching at the CDN level. 
+To run on production, you will need to run it as `sudo` to bind it to the port 80. Otherwise you can keep it on any other custom port and put [Varnish](https://www.varnish-cache.org/) or [Nginx](http://wiki.nginx.org/Main) in front (I'm personally running it directly on port 80 and I use [cloudflare](http://cloudflare.com) for caching at the CDN level. 
 
     sudo NODE_ENV=production NODE_PORT=80 node server.js
