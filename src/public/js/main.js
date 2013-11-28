@@ -5,7 +5,7 @@ var scripts = {
   "development" : ["analytics","domReady!","timeago!", "livereload"]
 };
 
-require(scripts[ENV], function(timeago, analytics) {
+require(scripts[ENV], function(analytics) {
 
   var anchors = document.getElementsByTagName("a");
   for(var i=0, len=anchors.length; i<len; i++) {
@@ -22,7 +22,7 @@ require(scripts[ENV], function(timeago, analytics) {
   shareTwitter.addEventListener("click", function(e) {
     e.preventDefault();
     analytics.track('share_twitter', window.location.href, 'footer');
-    var url = 'http://twitter.com/intent/tweet?text='+encodeURIComponent(window.document.title)+'&via=xdamman&url='+encodeURIComponent(window.location.href);
+    var url = 'http://twitter.com/intent/tweet?text='+encodeURIComponent(window.document.title)+'&related=xdamman&url='+encodeURIComponent(window.location.href);
     var w = 640, h=440;
     var left = (screen.width/2)-(w/2);
     var top = (screen.height/2)-(h/2)-100;

@@ -105,7 +105,10 @@ define("timeago", function() {
   };
 
   // So that you can load the module and execute it straight away with require(['timeago!']);
-  fn.load = fn;
+  fn.load = function (name, req, onLoad, config) {
+    fn();
+    if(typeof onLoad == 'function') return onLoad();
+  };
 
   fn.fromNow = function(date) { 
       var distMilli = distance(date);
@@ -118,115 +121,3 @@ define("timeago", function() {
   return fn;
 
 });
-
-/*
-define("timeago", function() {
-
-  var fn = function(timestamp) {
-        if (timestamp instanceof Date) {
-            return inWords(timestamp);
-        } else if (typeof timestamp === "string") {
-            return inWords($.timeago.parse(timestamp));
-        } else if (typeof timestamp === "number") {
-            return inWords(new Date(timestamp));
-        } else {
-            return inWords($.timeago.datetime(timestamp));
-        }
-    };
-
-
-
-  fn.parse = function(s) {
-            s = s.replace(/\.\d+/, ""); // remove milliseconds
-            s = s.replace(/-/, "/").replace(/-/, "/");
-            s = s.replace(/T/, " ").replace(/Z/, " UTC");
-            s = s.replace(/([\+\-]\d\d)\:?(\d\d)/, " $1$2"); // -04:00 -> -0400
-            return new Date(s);
-        };
-
-  fn.datetime = function(elem) {
-            var iso8601 = fn.isTime(elem) ? $(elem).attr("datetime") : $(elem).attr("title");
-            return fn.parse(iso8601);
-        };
-
-  fn.isTime = function(elem) {
-            // jQuery's `is()` doesn't play well with HTML5 in IE
-            return $(elem).get(0).tagName.toLowerCase() === "time"; // $(elem).is("time");
-        };
-
-    // functions that can be called via $(el).timeago('action')
-    // init is default when no action is given
-    // functions are called with context of a single element
-    var functions = {
-        init: function() {
-            var refresh_el = $.proxy(refresh, this);
-            refresh_el();
-            var $s = $t.settings;
-            if ($s.refreshMillis > 0) {
-                setInterval(refresh_el, $s.refreshMillis);
-            }
-        },
-        update: function(time) {
-            $(this).data('timeago', {
-                datetime: $t.parse(time)
-            });
-            refresh.apply(this);
-        },
-        updateFromDOM: function() {
-            $(this).data('timeago', {
-                datetime: $t.parse($t.isTime(this) ? $(this).attr("datetime") : $(this).attr("title"))
-            });
-            refresh.apply(this);
-        }
-    };
-
-    $.fn.timeago = function(action, options) {
-        var fn = action ? functions[action] : functions.init;
-        if (!fn) {
-            throw new Error("Unknown function name '" + action + "' for timeago");
-        }
-        // each over objects here and call the requested function
-        this.each(function() {
-            fn.call(this, options);
-        });
-        return this;
-    };
-
-    function refresh() {
-        var data = prepareData(this);
-        var $s = $t.settings;
-
-        if (!isNaN(data.datetime)) {
-            if ($s.cutoff == 0 || distance(data.datetime) < $s.cutoff) {
-                $(this).text(inWords(data.datetime));
-            }
-        }
-        return this;
-    }
-
-    function prepareData(element) {
-        element = $(element);
-        if (!element.data("timeago")) {
-            element.data("timeago", {
-                datetime: $t.datetime(element)
-            });
-            var text = $.trim(element.text());
-            if ($t.settings.localeTitle) {
-                element.attr("title", element.data('timeago').datetime.toLocaleString());
-            } else if (text.length > 0 && !($t.isTime(element) && element.attr("title"))) {
-                element.attr("title", text);
-            }
-        }
-        return element.data("timeago");
-    }
-
-    function inWords(date) {
-        return $t.inWords(distance(date));
-    }
-
-    // fix for IE6 suckage
-    document.createElement("abbr");
-    document.createElement("time");
-})); 
-
-*/
