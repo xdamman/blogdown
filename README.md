@@ -37,9 +37,13 @@ As a result, all the pages delivered have more than 95/100 on desktop and mobile
 The content of the site lives in the `/content` directory. 
 
 There are 3 subdirectories: 
-- `/content/posts`: where your posts are (they need to have a `.md` extension (for [markdown](http://en.wikipedia.org/wiki/Markdown))
+- `/content/posts`: where your posts are (they need to have a `.md` extension (for [markdown](http://en.wikipedia.org/wiki/Markdown)))
 - `/content/partials`: partial content that can be used in the views. For now, there is only a `about.md` that we render at the top of the homepage and at the bottom of every post. 
 - `/content/public`: public directory where you can store any static asset. They will be available from `http://localhost:3000/public`
+
+I've personally moved the `/content` directory into [its own repo](http://github.com/xdamman/website-content) so that I can easily update the content without having to redeploy the server. It's also great to allow anyone to submit pull requests. The website server watches for any change in the `/content` directory and automatically loads new or updated posts.
+
+I've set up a `post-receive` git hook to keep the website's content directory in sync whenever I push new commits to the [website-content repo](http://github.com/xdamman/website-content). 
 
 ## Running on production
 
