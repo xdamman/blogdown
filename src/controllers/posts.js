@@ -10,7 +10,7 @@ module.exports = function(server) {
   var loadPost = function(postfile, cb) {
     if(utils.getFileExtension(postfile) != 'md') return;
     console.log("Loading '"+postfile+"'");
-    utils.loadDoc(server.config.posts_directory+'/'+postfile, function(err, doc) {
+    utils.loadDoc(server.config.paths.posts+'/'+postfile, function(err, doc) {
       if(err) return cb(err);
       doc.permalink = server.set("base_url") + "/" + doc.slug;
       posts[postfile] = doc; 
@@ -43,11 +43,11 @@ module.exports = function(server) {
 
   var init = function() {
 
-    fs.watch(server.config.posts_directory, function(event, file) {
+    fs.watch(server.config.paths.posts, function(event, file) {
       loadPost(file);
     });
 
-    var files = fs.readdirSync(server.config.posts_directory);
+    var files = fs.readdirSync(server.config.paths.posts);
 
     for(var i=0, len=files.length; i < len; i++) {
       loadPost(files[i]);
@@ -69,7 +69,8 @@ module.exports = function(server) {
       for(var i in posts) {
         posts_array.push(posts[i]);
       }
-      posts_array.sort(function(a,b) { return (a.date<b.date); });
+      posts_array = posts_array.sort(function(a,b) { return (a.date<b.date); });
+      console.log(posts_array[0].title);
       return posts_array.slice(0,max);
     },
 

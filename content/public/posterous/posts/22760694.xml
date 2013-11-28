@@ -1,0 +1,64 @@
+<item>
+	<title>Report on the DB1 course</title>
+	<link>http://xdamman.posterous.com/report-on-the-db1-course</link>
+	<pubDate>Sat Feb 24 12:29:59 -0800 2007</pubDate>
+	
+	<dc:creator><![CDATA[Xavier Damman]]></dc:creator>
+	
+	
+
+	<category><![CDATA[Uncategorized]]></category>
+
+	<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+
+  <guid isPermaLink="false">http://xdamman.posterous.com/report-on-the-db1-course</guid>
+	<description></description>
+	<content:encoded><![CDATA[That post's aim is to show the matter we saw during the three-week intensive course of database 1.
+That way, the next teacher coming from Madrid or whatsoever may know from where will he have to start.
+<p style="text-align: right; font-size: 10px;">Technorati Tags: <a href="http://www.technorati.com/tag/burundi" rel="tag">burundi</a>, <a href="http://www.technorati.com/tag/ngozi" rel="tag">ngozi</a>, <a href="http://www.technorati.com/tag/database" rel="tag">database</a>, <a href="http://www.technorati.com/tag/tedeco" rel="tag">tedeco</a></p>
+<p><!--more--></p>
+I taught to the second year of the computer science degree (a four-year degree). It was all the morning during 3 weeks.
+The first week we saw the overall topic of databases. When do we need them? What do they provide?
+We also saw the ANSI multi layers architectures with plenty of examples to illustrate their inter-independence.
+And we briefly talked about the 2 first data architectures (in arborescence and in network).
+
+The second week we saw the relational model. We explained the concept of the tables and we dug into the relational algebra. 
+By the end of the week we've started to translate the algebra to the SQL language.
+We eventually  finished the SQL language (we saw the INSERT, UPDATE, DELETE queries, plus the SELECT with conditions, jointures, grouping, aggregation functions such as MIN(), MAX(), SUM(), AVG(), ordering, limits and subqueries).
+We have just omitted the DATE relative SQL  functions.
+We also talked about the integrity management (why it's important? Why it's far better to apply integrity checks directly in the DBMS and not in the application's side). We saw the Cascade strategy and the SET NULL one.
+
+Last week, we have practised on SQL queries and we talked about the normal forms. 
+As you might see, we didn't had time to talk about the inner advanced features of the DBMS such as indexes and clusters.
+
+As a remainder, here is the correction of the exam the student passed the Thursday of the third week.
+
+<div class='p_embed p_image_embed'>
+<img alt="Media_httpwwwxavierda_cndqj" height="100" src="http://getfile7.posterous.com/getfile/files.posterous.com/import-cjvw/mavhgCIHshsfufAdAdceHpCzaynrmjCmCGBkcmlrjkDxDqnkgHzifdCGuteD/media_httpwwwxavierda_cndqj.jpg.scaled500.jpg" width="75" />
+</div>
+ <div class='p_embed p_image_embed'>
+<img alt="Media_httpwwwxavierda_ympii" height="100" src="http://getfile6.posterous.com/getfile/files.posterous.com/import-cjvw/otnwphysbahwEpglmqhltbJksHdBlkIkIiyasoaxICjiyIJqhcfvJdfupliI/media_httpwwwxavierda_ympII.jpg.scaled500.jpg" width="75" />
+</div>
+ <div class='p_embed p_image_embed'>
+<img alt="Media_httpwwwxavierda_hqgaj" height="100" src="http://getfile0.posterous.com/getfile/files.posterous.com/import-cjvw/GinrmDHjjmrDkxubpvoHpoaGxgegczwJhIpIjCyaIhsrjfvFruqibpltpeyD/media_httpwwwxavierda_HqGAj.jpg.scaled500.jpg" width="75" />
+</div>
+
+
+.]]></content:encoded>
+	<excerpt:encoded><![CDATA[That post's aim is to show the matter we saw during the three-week intensive course of database 1. That way, the next teacher coming from Madrid or whatsoever may know from where will he have to start. Technorati Tags: burundi, ngozi, database, te...]]></excerpt:encoded>	
+
+	<wp:post_date>Sat Feb 24 12:29:59 -0800 2007</wp:post_date>
+	<wp:post_date_gmt>Sat Feb 24 12:29:59 -0800 2007</wp:post_date_gmt>
+	<wp:comment_status>open</wp:comment_status>
+	<wp:ping_status>open</wp:ping_status>
+	<wp:post_id>22760694</wp:post_id>
+	<wp:post_name>report-on-the-db1-course</wp:post_name>
+	<wp:status>publish</wp:status>
+	<wp:post_parent>0</wp:post_parent>
+	<wp:menu_order>0</wp:menu_order>
+	<wp:post_type>post</wp:post_type>
+	<wp:post_password></wp:post_password>
+	<wp:is_sticky>0</wp:is_sticky>
+
+	
+</item>

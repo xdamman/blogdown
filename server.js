@@ -2,7 +2,7 @@ var express = require('express')
   ;
 
 var server = express();
-server.config = require('./config/server');
+server.config = require('./config')(server);
 server.controllers = require('./src/controllers')(server);
 
 require('./config/express')(server);

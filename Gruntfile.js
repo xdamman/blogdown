@@ -45,6 +45,24 @@ module.exports = function(grunt) {
           preserveLicenseComments: false
         }
       }
+    },
+    bumper: {
+      options: {
+          files: ['package.json','bower.json']
+        , pushTo: 'deploy'
+        , runTasks: false
+      }
+    },
+    asset_cachebuster: {
+      options: {
+          buster: "<%= pkg.version %>"
+        , htmlExtension: "hjs"
+      },
+      dist: {
+        files: {
+          'dist/views/layout.hjs':['dist/views/layout.hjs']
+        }
+      }
     }
   });
 
@@ -53,8 +71,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-uncss');
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-requirejs');
+  grunt.loadNpmTasks('grunt-bumper');
+  grunt.loadNpmTasks('grunt-asset-cachebuster');
 
   // Default task(s).
-  grunt.registerTask('default', ['copy','uncss', 'processhtml','requirejs']);
+  grunt.registerTask('default', ['copy','uncss','requirejs','processhtml','asset_cachebuster']);
+  grunt.registerTask('deploy', ['default','bumper']);
 
 };

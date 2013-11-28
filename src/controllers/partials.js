@@ -11,7 +11,7 @@ module.exports = function(server) {
     if(utils.getFileExtension(partialfile) != 'md') return;
     console.log("Loading partial '"+partialfile+"'");
 
-    utils.loadDoc(server.config.partials_directory+'/'+partialfile, function(err, doc) {
+    utils.loadDoc(server.config.paths.partials+'/'+partialfile, function(err, doc) {
       if(err) return cb(err);
       partials[partialfile] = doc; 
       if(cb) cb(doc);
@@ -20,11 +20,11 @@ module.exports = function(server) {
 
   var init = function() {
 
-    fs.watch(server.config.partials_directory, function(event, file) {
+    fs.watch(server.config.paths.partials, function(event, file) {
       loadPartial(file);
     });
 
-    var files = fs.readdirSync(server.config.partials_directory);
+    var files = fs.readdirSync(server.config.paths.partials);
 
     for(var i=0, len=files.length; i < len; i++) {
       loadPartial(files[i]);
