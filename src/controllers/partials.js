@@ -12,7 +12,10 @@ module.exports = function(server) {
     console.log("Loading partial '"+partialfile+"'");
 
     utils.loadDoc(server.config.paths.partials+'/'+partialfile, function(err, doc) {
-      if(err) return cb(err);
+      if(err) {
+        console.error("loadPartial: "+server.config.paths.partials+'/'+partialfile, err);
+        if(cb) return cb(err);
+      }
       partials[partialfile] = doc; 
       if(cb) cb(doc);
     });

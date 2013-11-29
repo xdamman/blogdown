@@ -24,7 +24,8 @@ server.post('/webhooks/github', function(req, res) {
     console.log('stdout: ', stdout);
     console.error('exec npm stderr: ', stderr);
   });
-  console.log(req.body);
+  var payload = JSON.parse(req.body.payload);
+  console.log("payload: ", payload);
   res.send('ok');
 });
 
