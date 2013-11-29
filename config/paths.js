@@ -1,11 +1,11 @@
+var content = require('website-content');
+
 module.exports = function(server) {
 
-  var contentBasePath = __dirname+"/../content"; 
-
   return {
-      posts: contentBasePath + "/posts"
-    , partials: contentBasePath + "/partials" 
-    , public: contentBasePath + "/public"
+      posts: content.getPath('posts') 
+    , partials: content.getPath('partials') 
+    , public: content.getPath('public') 
   };
 
 }

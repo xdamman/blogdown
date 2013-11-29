@@ -7,7 +7,8 @@
     "express": "~3.4.5",
     "marked": "~0.2.10",
     "consolidate": "~0.9.1",
-    "hogan.js": "~2.0.0"
+    "hogan.js": "~2.0.0",
+    "website-content": "git://github.com/xdamman/website-content.git"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -32,7 +33,9 @@
     "grunt-cli": "~0.1.11",
     "grunt-bumper": "~1.0.0",
     "grunt-asset-cachebuster": "~0.1.1",
-    "bower": "~1.2.7"
+    "bower": "~1.2.7",
+    "grunt-prompt": "~0.1.2",
+    "grunt-shell": "~0.6.1"
   },
   "scripts": {
     "install": "node_modules/bower/bin/bower install && node_modules/grunt-cli/bin/grunt",

@@ -10,7 +10,6 @@ lib-cov
 *.swp
 
 src/public/lib/*
-content/*
 dist
 pids
 logs/

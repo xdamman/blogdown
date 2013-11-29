@@ -1,8 +1,35 @@
 module.exports = function(grunt) {
-
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    prompt: {
+      dist: {
+        options: {
+          questions: [
+            {
+              config: 'config.content-repo', // arbitray name or config for any other    grunt task
+              type: 'input', // list, checkbox, confirm, input, password
+              message: 'Please enter the url of the git repository to use for content', 
+              validate: function(value) {
+                if(/git:\/\/.+(\.git)$/i.test(value)) return true;
+                else return "Invalid URL. Should be a git url as given by git remote -v, e.g. git://github.com:xdamman/website-content.git"
+              },
+              default: "git://github.com/xdamman/website-content.git",
+              filter: function(value) {
+                var pkg = grunt.config.get('pkg');
+                pkg.dependencies['website-content'] = value;
+                grunt.file.write('./package.json',JSON.stringify(pkg, null, 2));
+                grunt.task.run(['shell:npm-install-website-content']);
+                return value;
+              }, // modify the answer
+              when: function() {
+                return (!grunt.config.get('pkg').dependencies['website-content']);
+              }
+            }
+          ]
+        }
+      }
+    },
     copy: {
       dist: {
         files: [
@@ -63,15 +90,22 @@ module.exports = function(grunt) {
           'dist/views/layout.hjs':['dist/views/layout.hjs']
         }
       }
+    },
+    shell: {
+      'npm-install-website-content': {
+        command: "npm install website-content"
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-uncss');
+  grunt.loadNpmTasks('grunt-prompt');
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-requirejs');
   grunt.loadNpmTasks('grunt-bumper');
+  grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-asset-cachebuster');
 
   // Default task(s).
