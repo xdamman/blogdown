@@ -1,6 +1,6 @@
 {
   "name": "personal-website",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "xdamman.com website",
   "main": "server.js",
   "dependencies": {
