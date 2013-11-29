@@ -20,6 +20,7 @@ module.exports = function(server) {
       next();
     });
 
+    server.use(express.bodyParser());
     server.set('views', __dirname + '/../'+server.set('basePath')+'/views');
     server.set('view engine', 'hjs');
 

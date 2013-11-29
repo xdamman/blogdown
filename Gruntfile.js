@@ -11,7 +11,7 @@ module.exports = function(grunt) {
               type: 'input', // list, checkbox, confirm, input, password
               message: 'Please enter the url of the git repository to use for content', 
               validate: function(value) {
-                if(/git:\/\/.+(\.git)$/i.test(value)) return true;
+                if(/git(\+ssh)?:\/\/.+(\.git)$/i.test(value)) return true;
                 else return "Invalid URL. Should be a git url as given by git remote -v, e.g. git://github.com:xdamman/website-content.git"
               },
               default: "git://github.com/xdamman/website-content.git",

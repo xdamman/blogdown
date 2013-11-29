@@ -1,4 +1,5 @@
 var express = require('express')
+  , exec = require('child_process').exec
   ;
 
 var server = express();
@@ -15,6 +16,16 @@ server.get('/', function(req, res) {
     , about: server.controllers.partials.get('about')
     , posts: posts
   });
+});
+
+server.post('/webhooks/github', function(req, res) {
+  exec('npm install website-content', function(err, stdout, stderr) {
+    console.error(err);
+    console.log('stdout: ', stdout);
+    console.error('exec npm stderr: ', stderr);
+  });
+  console.log(req.body);
+  res.send('ok');
 });
 
 server.get('/stop', function(req, res, next) {
