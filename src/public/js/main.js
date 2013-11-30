@@ -1,11 +1,11 @@
 ENV = (window.location.port) ? "development" : "production";
 
 var scripts = {
-  "production" : ["analytics","domReady!", "timeago!"],
-  "development" : ["analytics","domReady!","timeago!", "livereload"]
+  "production" : ["diffty", "analytics","domReady!", "timeago!"],
+  "development" : ["diffty", "analytics","domReady!","timeago!", "livereload"]
 };
 
-require(scripts[ENV], function(analytics) {
+require(scripts[ENV], function(diffty, analytics) {
 
   var anchors = document.getElementsByTagName("a");
   for(var i=0, len=anchors.length; i<len; i++) {

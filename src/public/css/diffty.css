@@ -1,0 +1,25 @@
+.diffty-removed {
+  background: red;
+}
+
+.diffty-added {
+  background: green;
+}
+
+.diffty-hidediff .diffty-added {
+  background: none;
+}
+
+.diffty-hidediff .diffty-removed {
+  display: none;
+}
+
+.diffty-original .diffty-added {
+  display: none;
+}
+
+.diffty-original .diffty-removed {
+  background: none;
+}
+
+

@@ -17,6 +17,7 @@ require.config({
     , mocha: '../lib/mocha/mocha'
     , chai: '../lib/chai/chai'
     , json: '../lib/requirejs-plugins/src/json'
+    , jsdiff: '../lib/jsdiff/diff'
   },
   packages: [{
      name: "website",
@@ -34,6 +35,9 @@ require.config({
     },
     jasmine: {
         exports: 'jasmine'
+    },
+    jsdiff: {
+        exports: 'JsDiff'
     },
     'jasmine-html': {
         deps: ['jasmine'],

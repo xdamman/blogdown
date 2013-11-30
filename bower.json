@@ -28,6 +28,7 @@
   "dependencies": {
     "bootstrap": "~3.0.2",
     "requirejs": "~2.1.9",
+    "jsdiff": "https://github.com/kpdecker/jsdiff.git",
     "requirejs-domready": "~2.0.1"
   }
 }

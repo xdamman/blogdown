@@ -5,6 +5,7 @@
     <!-- build:remove -->
     <link rel="stylesheet" href="/public/css/bootstrap.css" />
     <link rel="stylesheet" href="/public/css/main.css" />
+    <link rel="stylesheet" href="/public/css/diffty.css" />
     <!-- /build -->
 
     <style>
