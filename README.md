@@ -31,19 +31,21 @@ As a result, all the pages delivered have more than 95/100 on desktop and mobile
   
 1. Run `npm install` 
 
+1. A prompt will ask you what repository you want to use for the content of the site. Your best option is to clone the default content repository (http://github.com/xdamman/website-content) and use that new git URL. It's fine to keep the default one if you just want to test the server. You can always change it later by editing the line `website-content` in `package.json`.
+
 1. Start the web server by running `npm start`
     
 ## Edit the content
-The content of the site lives in the `/content` directory. 
+The content of the site lives in a separate repository. This is by design for two reasons: 
 
-There are 3 subdirectories: 
-- `/content/posts`: where your posts are (they need to have a `.md` extension (for [markdown](http://en.wikipedia.org/wiki/Markdown)))
-- `/content/partials`: partial content that can be used in the views. For now, there is only a `about.md` that we render at the top of the homepage and at the bottom of every post. 
-- `/content/public`: public directory where you can store any static asset. They will be available from `http://localhost:3000/public`
-
-I've personally moved the `/content` directory into [its own repo](http://github.com/xdamman/website-content) so that I can easily update the content without having to redeploy the server. It's also great to allow anyone to submit pull requests. The website server watches for any change in the `/content` directory and automatically loads new or updated posts.
-
-I've set up a `post-receive` git hook to keep the website's content directory in sync whenever I push new commits to the [website-content repo](http://github.com/xdamman/website-content). 
+1. You can make the content repo public and allow anyone to submit pull requests to edit the content without having to worry about the code of the server.
+1. You can create new content or edit it without having to redeploy the server (you can configure a github webhook to notify the server when there is an update in the content repo. The POST route is `/webhooks/github`).
+   
+This repo should contain 3 directories:
+ 
+- `/posts`: where your posts are (they need to have a `.md` extension (for [markdown](http://en.wikipedia.org/wiki/Markdown)))
+- `/partials`: partial content that can be used in the views. For now, there is only a `about.md` that we render at the top of the homepage and at the bottom of every post. 
+- `/public`: public directory where you can store any static asset. They will be available from `http://localhost:3000/public`
 
 ## Running on production
 
