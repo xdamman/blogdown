@@ -9,11 +9,11 @@ module.exports = function(server) {
 
   var loadPartial = function(partialfile, cb) {
     if(utils.getFileExtension(partialfile) != 'md') return;
-    console.log("Loading partial '"+partialfile+"'");
+    server.log("Loading partial '"+partialfile+"'");
 
     utils.loadDoc(server.config.paths.partials+'/'+partialfile, function(err, doc) {
       if(err) {
-        console.error("loadPartial: "+server.config.paths.partials+'/'+partialfile, err);
+        server.error("loadPartial: "+server.config.paths.partials+'/'+partialfile, err);
         if(cb) return cb(err);
       }
       partials[partialfile] = doc; 

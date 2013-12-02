@@ -9,7 +9,7 @@ module.exports = function(server) {
 
   var loadPost = function(postfile, cb) {
     if(utils.getFileExtension(postfile) != 'md') return;
-    console.log("Loading '"+postfile+"'");
+    server.log("Loading '"+postfile+"'");
     utils.loadDoc(server.config.paths.posts+'/'+postfile, function(err, doc) {
       if(err) return cb(err);
       doc.permalink = server.set("base_url") + "/" + doc.slug;
@@ -25,13 +25,12 @@ module.exports = function(server) {
     var path = "/"+filename;
 
     if(routes[path]) return;
-    console.log("Setting up route "+path); 
+    server.log("Setting up route "+path); 
 
     routes[path] = { path: path, requests: 0, last_request: null };
     server.get('/'+filename, function(req, res) {
       routes[path].requests++;
       routes[path].last_request = new Date;
-      console.log(routes[path]);
       res.set("Cache-Control","public, max-age=62");
       res.render('layout', { 
           partials: { content: '_post', footer: '_footer', about: '_about' },

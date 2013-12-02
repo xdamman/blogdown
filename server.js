@@ -4,9 +4,9 @@ var express = require('express')
 
 var server = express();
 server.config = require('./config')(server);
+require('./config/express')(server);
 server.controllers = require('./src/controllers')(server);
 
-require('./config/express')(server);
 
 server.get('/', function(req, res) {
   var posts = server.controllers.posts.latest(100);
@@ -18,14 +18,19 @@ server.get('/', function(req, res) {
   });
 });
 
+server.get('/error', function(req, res) {
+  throw new Error("Uncaught error?");
+  res.send(req.body.hello.world);
+});
+
 server.post('/webhooks/github', function(req, res) {
   exec('npm install website-content', function(err, stdout, stderr) {
-    console.error(err);
-    console.log('stdout: ', stdout);
-    console.error('exec npm stderr: ', stderr);
+    server.error(err);
+    server.log('stdout: ', stdout);
+    server.error('exec npm stderr: ', stderr);
   });
   var payload = JSON.parse(req.body.payload);
-  console.log("payload: ", payload);
+  server.log("payload: ", payload);
   res.send('ok');
 });
 
@@ -50,4 +55,4 @@ var loadPartial = function(partialfile, cb) {
 
 
 server.listen(server.set('port'));
-console.log("Server listening on port "+server.set('port')+" in "+server.set('env')+" environment");
+server.log("Server listening on port "+server.set('port')+" in "+server.set('env')+" environment");

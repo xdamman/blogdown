@@ -8,7 +8,9 @@
     "marked": "~0.2.10",
     "consolidate": "~0.9.1",
     "hogan.js": "~2.0.0",
-    "website-content": "git://github.com/xdamman/website-content.git"
+    "website-content": "git://github.com/xdamman/website-content.git",
+    "express-winston": "~0.2.1",
+    "winston": "~0.7.2"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -35,7 +37,8 @@
     "grunt-asset-cachebuster": "~0.1.1",
     "bower": "~1.2.7",
     "grunt-prompt": "~0.1.2",
-    "grunt-shell": "~0.6.1"
+    "grunt-shell": "~0.6.1",
+    "grunt-forever": "~0.4.1"
   },
   "scripts": {
     "install": "node_modules/bower/bin/bower install && node_modules/grunt-cli/bin/grunt",
