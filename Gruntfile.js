@@ -95,14 +95,6 @@ module.exports = function(grunt) {
       'npm-install-website-content': {
         command: "npm install website-content"
       }
-    },
-    forever: {
-      options: {
-          index: "<%= pkg.main %>"
-        , logDir: "logs/"
-        , errFile: "forever.stderr.log"
-        , logFile: "forever.stdout.log"
-      }
     }
   });
 
@@ -115,7 +107,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bumper');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-asset-cachebuster');
-  grunt.loadNpmTasks('grunt-forever');
 
   // Default task(s).
   grunt.registerTask('default', ['copy','uncss','requirejs','processhtml','asset_cachebuster']);
