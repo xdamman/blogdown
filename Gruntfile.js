@@ -120,6 +120,5 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['copy','uncss','requirejs','processhtml','asset_cachebuster']);
   grunt.registerTask('deploy', ['default','bumper']);
-  grunt.registerTask('restart', ['forever:restart']);
 
 };
