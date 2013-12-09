@@ -1,0 +1,21 @@
+@media (min-height: 700px) and (min-width: 1100px) {
+  body.page {
+    background: url('/public/img/xavierdamman-homepage.jpg') no-repeat;
+    background-size: contain;
+    background-position: 0 100%;
+    background-color: #DCDEEA;
+    background-attachment: fixed;
+    padding-left: 300px;
+  }
+
+  body.page #footer {
+    padding-left: 350px;
+    background: none;
+  }
+
+  body.page .lead {
+    margin-top: 50px;
+  }
+
+}
+
