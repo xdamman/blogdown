@@ -1,4 +1,6 @@
-{{>about}}
+<p class="lead">
+  {{{about.html}}}
+</p>
 {{#posts}}
   {{>post_item}}
 {{/posts}}

@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         options: {
             compress:true
           , csspath: "../"
-          , ignore: ["p","h1","h2","h3","h4","ul","li",".about p",".post h2"]
+          , ignore: ["p","h1","h2","h3","h4","ul","li",".about p",".post h2", "blockquote"]
           //, stylesheets: ['src/public/lib/bootstrap/dist/css/bootstrap.css','src/public/css/main.css']
         }
     },

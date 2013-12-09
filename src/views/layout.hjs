@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
   </head>
 
-  <body>
+  <body class="{{template}}">
     <!-- Wrap all page content here -->
     <div id="wrap">
 
@@ -25,7 +25,9 @@
       </div>
     </div>
 
-    {{>footer}}
+    <div id="footer">
+      {{>footer}}
+    </div>
 
     <!-- build:js /public/js/optimized.min.js -->
     <script src="/public/lib/requirejs/require.js"></script>

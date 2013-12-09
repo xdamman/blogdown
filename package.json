@@ -5,12 +5,12 @@
   "main": "server.js",
   "dependencies": {
     "express": "~3.4.5",
-    "marked": "~0.2.10",
     "consolidate": "~0.9.1",
     "hogan.js": "~2.0.0",
     "website-content": "git://github.com/xdamman/website-content.git",
     "express-winston": "git://github.com/xdamman/express-winston.git",
-    "winston": "~0.7.2"
+    "winston": "~0.7.2",
+    "showdown": "git://github.com/xdamman/showdown.git"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

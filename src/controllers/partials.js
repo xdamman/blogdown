@@ -16,6 +16,7 @@ module.exports = function(server) {
         server.error("loadPartial: "+server.config.paths.partials+'/'+partialfile, err);
         if(cb) return cb(err);
       }
+      doc.html = utils.stripTags(doc.html, "<a><b><u><i>");
       partials[partialfile] = doc; 
       if(cb) cb(doc);
     });

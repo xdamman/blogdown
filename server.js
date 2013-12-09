@@ -12,9 +12,10 @@ server.get('/', function(req, res) {
   var posts = server.controllers.posts.latest(100);
 
   res.render('layout', {
-      partials: { content: '_home', post_item: '_post_item', footer: '_footer', about: '_about' }
+      partials: { content: '_home', post_item: '_post_item', footer: '_footer_home', about: '_about' }
     , about: server.controllers.partials.get('about')
     , posts: posts
+    , template: 'home page'
   });
 });
 

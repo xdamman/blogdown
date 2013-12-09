@@ -1,6 +1,9 @@
-<div class="list-group">
-  <a href="/{{slug}}" class="list-group-item">
-    <h4>{{{title}}}</h4>
-    <p>{{{lead}}}</p>
-  </a>
+<div class="post-item">
+  <h4>
+    <a href="/{{slug}}">
+      {{{title}}}
+    </a>
+    <span class="timeago" data-date="{{date}}"></span>
+  </h4>
+  <p>{{{lead}}}</p>
 </div>

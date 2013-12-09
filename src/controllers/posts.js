@@ -36,7 +36,8 @@ module.exports = function(server) {
           partials: { content: '_post', footer: '_footer', about: '_about' },
           about: server.controllers.partials.get('about'),
           title: posts[postfile].title,
-          post: posts[postfile]
+          post: posts[postfile],
+          template: posts[postfile].template
       });
     });
   };
@@ -66,7 +67,8 @@ module.exports = function(server) {
     latest: function(max) {
       var posts_array = [];
       for(var i in posts) {
-        posts_array.push(posts[i]);
+        if(!posts[i].draft && !posts[i].hidden)
+          posts_array.push(posts[i]);
       }
       posts_array = posts_array.sort(function(a,b) { return (a.date<b.date); });
       return posts_array.slice(0,max);

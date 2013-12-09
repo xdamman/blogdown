@@ -6,7 +6,55 @@ html,
 body {
     height: 100%;
     width: 100%; 
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   /* The html and body elements cannot have any padding or margin. */
+}
+
+a {
+  color: #069;
+}
+
+body.page .lead {
+  margin-top: 20px;
+}
+
+@media (min-height: 700px) and (min-width: 1100px) {
+  body.page {
+    background: url('/public/img/xavierdamman-homepage.jpg') no-repeat;
+    background-size: contain;
+    background-position: 0 100%;
+    background-color: #DCDEEA;
+    background-attachment: fixed;
+    padding-left: 300px;
+  }
+
+  body.page #footer {
+    padding-left: 350px;
+    background: none;
+  }
+
+  body.page .lead {
+    margin-top: 50px;
+  }
+
+}
+
+body.home h4 {
+  margin: 18px 0px 6px 0px;
+}
+
+body.page h4 a {
+}
+
+body.page .post-item .timeago {
+  font-weight: normal;
+  font-size: 11px;
+  color: #555;
+}
+
+body.page .post-item p {
+  font-size: 14px;
 }
 
 /* Wrapper for page content to push down footer */
@@ -17,6 +65,10 @@ body {
   margin: 0 auto -40px;
  /* Pad bottom by footer height */
   padding: 0 0 40px;
+}
+
+#wrap > .container {
+  background: rgba(255,255,255,0.5);
 }
 
 /* Set the fixed height of the footer here */
@@ -59,7 +111,8 @@ h1, h2, h3, h4, p {
 }
 
 p, li {
-  font-size: 17px;
+  font-size: 16px;
+  color: rgb(50,50,50);
   line-height: 1.5;
 }
 
@@ -106,4 +159,10 @@ p.lead {
   font-size:12px;
 }
  
+.twitter-tweet {
+  margin: 20px auto !important;
+}
 
+.avatar {
+  border-radius: 50%;
+}
