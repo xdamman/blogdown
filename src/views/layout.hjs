@@ -2,6 +2,8 @@
   <head>
     <title>{{#title}}{{title}} - {{/title}}Xavier Damman (@xdamman)</title>
 
+    <link rel="icon" type="image/png" href="/public/img/favicon.png" />
+
     <!-- build:remove -->
     <link rel="stylesheet" href="/public/css/bootstrap.css" />
     <link rel="stylesheet" href="/public/css/main.css" />

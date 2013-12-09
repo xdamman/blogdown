@@ -1,4 +1,5 @@
 var express = require('express')
+  , path = require('path')
   , expressWinston = require('express-winston')
   , winston = require('winston')
   ;
@@ -27,6 +28,7 @@ module.exports = function(server) {
     server.use('/public/lib', express.static(__dirname + '/../'+server.set('basePath')+'/public/lib', {maxAge: server.set('staticMaxAge')}));
     server.use('/public/css', express.static(__dirname + '/../'+server.set('basePath')+'/public/css', {maxAge: server.set('staticMaxAge')}));
     server.use('/public/js', express.static(__dirname + '/../'+server.set('basePath')+'/public/js', {maxAge: server.set('staticMaxAge')}));
+    server.use(express.favicon(server.config.paths.public+'/img/favicon.png'));
 
     server.set('port',process.env.NODE_PORT || 3000);
     server.set('base_url','//xdamman.com');
