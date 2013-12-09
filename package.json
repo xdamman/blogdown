@@ -7,10 +7,10 @@
     "express": "~3.4.5",
     "consolidate": "~0.9.1",
     "hogan.js": "~2.0.0",
-    "website-content": "git://github.com/xdamman/website-content.git",
-    "express-winston": "git://github.com/xdamman/express-winston.git",
+    "website-content": "https://github.com/xdamman/website-content/archive/master/tarball.tar.gz",
+    "express-winston": "https://github.com/xdamman/express-winston/archive/master/tarball.tar.gz",
     "winston": "~0.7.2",
-    "showdown": "git://github.com/xdamman/showdown.git"
+    "showdown": "https://github.com/xdamman/showdown/archive/master/tarball.tar.gz"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
