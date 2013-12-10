@@ -40,13 +40,16 @@ module.exports = {
       }
 
       var markdown_lines = lines.slice(i);
-      var converter = new showdown.converter({extensions: ['twitter']});
+      var converter = new showdown.converter({extensions: ['twitter','table']});
       doc.html = converter.makeHtml(markdown_lines.join('\n'));
       var matches = doc.html.match(/^<h1[^>]*>(.*)(<\/h1>)$/m,'$1');
       if(matches && matches.length == 3) {
         doc.title = matches[1];
         doc.html = doc.html.replace(/^<h1[^>]*>(.*)(<\/h1>)$/m,'');
       }
+
+      doc.html = doc.html.replace(/<table>/g,'<div class="table-responsive"><table class="table table-hover">');
+      doc.html = doc.html.replace(/<\/table>/g,'</table></div>');
 
       // Get lead (first paragraph after title)
       if(doc.title && !doc.lead) {

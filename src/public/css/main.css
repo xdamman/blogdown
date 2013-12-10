@@ -145,3 +145,8 @@ p.lead {
 .avatar {
   border-radius: 50%;
 }
+
+table p {
+  margin: 0;
+  padding: 0px;
+}
