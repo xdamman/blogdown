@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         options: {
             compress:true
           , csspath: "../"
-          , ignore: ["p","h1","h2","h3","h4","ul","li",".about p",".post h2", "blockquote","body.page","body.page .lead","body.page #footer", ".post-item .timeago", ".twitter-tweet","table",".table-responsive",".table-hover","table p","thead","tr","td","tbody",".table","th",".table > tbody > tr > td",".table > thead > tr > th",".table > thead:first-child > tr:first-child > th"]
+          , ignore: ["p","h1","h2","h3","h4","ul","li",".about p",".post h2", "blockquote","body.page","body.page .lead","body.page #footer", ".post-item .timeago", ".twitter-tweet","table",".table-responsive",".table-hover","table p","thead","tr","td","tbody",".table","th",".table > tbody > tr > td",".table > thead > tr > th",".table > thead:first-child > tr:first-child > th", "body.home h4", "body.page .post-item p"]
           //, stylesheets: ['src/public/lib/bootstrap/dist/css/bootstrap.css','src/public/css/main.css']
         }
     },
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
       options: {
           files: ['package.json','bower.json']
         , pushTo: 'deploy'
-        , runTasks: false
+        , runTasks: ['shell:npm-stop']
       }
     },
     asset_cachebuster: {
@@ -94,6 +94,9 @@ module.exports = function(grunt) {
     shell: {
       'npm-install-website-content': {
         command: "npm install website-content"
+      },
+      'npm-stop': {
+        command: "npm stop"
       }
     }
   });
