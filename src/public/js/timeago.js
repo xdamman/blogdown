@@ -83,30 +83,27 @@ define("timeago", function() {
     return str;
   };
 
-  
-  var fn = function(options) {
+  var fn = function(options) {};
 
+  fn.render = function(options) {
     var options = options || {};
     options.class = options.class || "timeago";
     options.context = options.context || window.document;
+    this.els = options.context.getElementsByClassName(options.class);
 
-    var els = options.context.getElementsByClassName(options.class);
-
-    for(var i=0; i<els.length;i++) {
-      var el = els[i];
+    for(var i=0; i<this.els.length;i++) {
+      var el = this.els[i];
       if(!el.dataset.date) return;
-
       var date = new Date(el.dataset.date);
       if(isNaN(date.getDate())) return;
       el.innerText = fn.fromNow(date);
-
     }
 
   };
 
   // So that you can load the module and execute it straight away with require(['timeago!']);
   fn.load = function (name, req, onLoad, config) {
-    fn();
+    fn.render();
     if(typeof onLoad == 'function') return onLoad();
   };
 

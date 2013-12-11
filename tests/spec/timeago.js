@@ -43,7 +43,7 @@ describe("timeago", function() {
     span.dataset.date = ago(1,'month');
     container.appendChild(span);
 
-    timeago({ class: "timeago", context: container });
+    timeago.render({ class: "timeago", context: container });
 
     expect(span.innerText).to.equal("a month ago");
 
