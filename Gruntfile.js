@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         options: {
             compress:true
           , csspath: "../"
-          , ignore: ["p","h1","h2","h3","h4","ul","li",".about p",".post h2", "blockquote","body.page","body.page .lead","body.page #footer", ".post-item .timeago", ".twitter-tweet","table",".table-responsive",".table-hover","table p"]
+          , ignore: ["p","h1","h2","h3","h4","ul","li",".about p",".post h2", "blockquote","body.page","body.page .lead","body.page #footer", ".post-item .timeago", ".twitter-tweet","table",".table-responsive",".table-hover","table p","thead","tr","td","tbody",".table","th",".table > tbody > tr > td",".table > thead > tr > th",".table > thead:first-child > tr:first-child > th"]
           //, stylesheets: ['src/public/lib/bootstrap/dist/css/bootstrap.css','src/public/css/main.css']
         }
     },
