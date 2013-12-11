@@ -77,7 +77,7 @@ module.exports = function(grunt) {
       options: {
           files: ['package.json','bower.json']
         , pushTo: 'deploy'
-        , runTasks: ['shell:npm-stop']
+        , runTasks: ['default','shell:npm-stop']
       }
     },
     asset_cachebuster: {
