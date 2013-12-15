@@ -1,5 +1,4 @@
 module.exports = function(server) {
-  if(server.set('env') == 'setup') return {};
 
   var baseDir = __dirname+'/../../../'
     , themePath;

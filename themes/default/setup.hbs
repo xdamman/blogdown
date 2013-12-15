@@ -1,9 +1,8 @@
-<h1>Welcome to BlogDown <small>one github repo, one blog</small></h1>
+<h1>Welcome to BlogDown <small>one repo, one blog</small></h1>
 
-{{#alert}}
+{{#if alert}}
   <div class="alert alert-{{alert.class}}">
     {{alert.msg}}
-
   </div>
 
   <div id="spinningSquaresG">
@@ -18,7 +17,7 @@
   </div>
 
 
-{{/alert}}
+{{/if}}
 
 {{^alert}}
 
@@ -32,6 +31,6 @@
     - themes/</pre>
   <h4>2. Go to the settings of your github repo and add a webhook like this:</h4>
       <img src="/img/setup-webhook.png" class="img-responsive img-rounded" />
-  <h4>3. Then click on "Test Hook" and refresh this page</h4>
+  <h4>3. Then click on "Test Hook" and "Update settings"  and refresh this page</h4>
 
 {{/alert}}

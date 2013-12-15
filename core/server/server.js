@@ -6,14 +6,9 @@ var express = require('express')
   ;
 
 var server = express();
-server.config = require('../../config'); 
-
-if(!server.config.repository || !fs.existsSync('../../content')) {
-  // Setup mode
-  server.set('env','setup');
-}
 
 require('./config/index')(server);
+
 
 if(server.set('env') == 'setup') {
   server.get('/(setup)?', function(req, res) {
@@ -41,7 +36,7 @@ server.get('/error', function(req, res) {
   res.send(req.body.hello.world);
 });
 
-server.get('/webhooks/github', function(req, res) {
+server.all('/webhooks/github', function(req, res) {
   try {
     var payload = JSON.parse(req.body.payload);
   } catch(e) {
@@ -66,8 +61,13 @@ server.get('/webhooks/github', function(req, res) {
       server.error('exec git clone stderr: ', stderr);
       server.log('exec git clone stdout: ', stdout);
 
-      var config = require('../../content/blogdown');
-      _.extend(server.config, config);
+      if(fs.existsSync(server.set('basePath')+'/content/blogdown.json')) {
+        var config = require(server.set('basePath')+'/content/blogdown');
+        _.extend(server.config, config);
+      }
+      else {
+        server.log("File "+server.set('basePath')+"/content/blogdown.json does not exist");
+      }
       utils.writeJSON('./config.json', server.config);
       server.log("updating config.json");
       
@@ -78,8 +78,8 @@ server.get('/webhooks/github', function(req, res) {
     return;
   }
 
-  server.log('cd '+__dirname+'/content && git pull origin master');
-  exec('cd '+__dirname+'/content && git pull origin master', function(err, stdout, stderr) {
+  server.log('cd '+server.set('basePath')+'/content && git pull origin master');
+  exec('cd '+server.set('basePath')+'/content && git pull origin master', function(err, stdout, stderr) {
     server.error(err);
     server.log('stdout: ', stdout);
     server.error('exec npm stderr: ', stderr);

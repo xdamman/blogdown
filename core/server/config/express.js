@@ -5,12 +5,6 @@ var express = require('express')
 
 module.exports = function(server) {
 
-  server.set('basePath','src');
-
-  server.configure("production","staging", function() {
-    // server.set('basePath','dist');
-  });
-
   server.configure(function() {
 
     server.set('port',process.env.NODE_PORT || 3000);
