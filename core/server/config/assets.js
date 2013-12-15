@@ -4,7 +4,7 @@ var express = require('express')
 
 module.exports = function(server) {
 
-  server.configure('development', function() {
+  server.configure('development','staging', function() {
     server.set('staticMaxAge', 0);
   });
 
@@ -23,5 +23,4 @@ module.exports = function(server) {
   server.use('/css', express.static(server.content.paths.theme+'/css', {maxAge: server.set('staticMaxAge')}));
   server.use('/js', express.static(server.content.paths.theme+'/js', {maxAge: server.set('staticMaxAge')}));
   server.use('/img', express.static(server.content.paths.theme+'/img', {maxAge: server.set('staticMaxAge')}));
-console.log(__dirname + '/../../frontend/'+server.set('basePath')+'/js');
 };

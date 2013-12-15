@@ -7,8 +7,8 @@ module.exports = function(server) {
 
   server.set('basePath','src');
 
-  server.configure("production", function() {
-    server.set('basePath','dist');
+  server.configure("production","staging", function() {
+    // server.set('basePath','dist');
   });
 
   server.configure(function() {
