@@ -1,22 +1,20 @@
 module.exports = function(server) {
 
-  var baseDir = __dirname+'/../../../'
-    , themePath;
+  var themePath;
 
   if(server.config.theme) {
-    themePath = baseDir+'content/themes/'+server.config.theme;
+    themePath = server.set('basePath')+'/content/themes/'+server.config.theme;
   }
   else {
-    themePath = baseDir+'themes/default';
+    themePath = server.set('basePath')+'/themes/default';
   }
 
   var paths = {
-      posts: baseDir+'content/posts' 
-    , partials: baseDir+'content/partials' 
-    , public: baseDir+'content/public'
+      posts: server.set('basePath')+'/content/posts' 
+    , partials: server.set('basePath')+'/content/partials' 
+    , public: server.set('basePath')+'/content/public'
     , theme: themePath
   };
-
 
   return paths;
 
