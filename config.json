@@ -1,0 +1,13 @@
+{
+  "theme": "xdamman",
+  "repository": {
+    "name": "website-content",
+    "description": "This is the website of xdamman.com",
+    "url": "https://github.com/xdamman/website-content",
+    "private": false,
+    "owner": {
+      "name": "Xavier Damman",
+      "email": "xdamman@gmail.com"
+    }
+  }
+}

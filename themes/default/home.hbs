@@ -1,0 +1,25 @@
+<h1>{{config.repository.name}}</h1>
+<p class="lead">{{config.repository.description}}</p>
+
+<h3>About</h3>
+<p class="lead">
+  {{{about.html}}}
+</p>
+
+{{^about}}
+  <div class="alert alert-info">
+    To add a description of your blog, add a "about.md" file in the "partials/" directory of <a href="{{config.repository.url}}" class="alert-link">your repository</a>.
+  </div>
+{{/about}}
+
+<h3>Latest posts</h3>
+{{#posts}}
+  {{>_post_item}}
+{{/posts}}
+
+{{^posts}}
+  <div class="alert alert-info">
+    There are no posts yet. To add a post, add a markdown file with the `.md` extension in the "posts/" directory of <a href="{{config.repository.url}}" class="alert-link">your repository</a>.
+  </div>
+{{/posts}}
+

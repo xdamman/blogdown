@@ -1,0 +1,37 @@
+<h1>Welcome to BlogDown <small>one github repo, one blog</small></h1>
+
+{{#alert}}
+  <div class="alert alert-{{alert.class}}">
+    {{alert.msg}}
+
+  </div>
+
+  <div id="spinningSquaresG">
+    <div id="spinningSquaresG_1" class="spinningSquaresG"></div>
+    <div id="spinningSquaresG_2" class="spinningSquaresG"></div>
+    <div id="spinningSquaresG_3" class="spinningSquaresG"></div>
+    <div id="spinningSquaresG_4" class="spinningSquaresG"></div>
+    <div id="spinningSquaresG_5" class="spinningSquaresG"></div>
+    <div id="spinningSquaresG_6" class="spinningSquaresG"></div>
+    <div id="spinningSquaresG_7" class="spinningSquaresG"></div>
+    <div id="spinningSquaresG_8" class="spinningSquaresG"></div>
+  </div>
+
+
+{{/alert}}
+
+{{^alert}}
+
+  <h4>1. Create a new repo that will host your markdown files</h4>
+  <p>It should have the following structure (<a href="http://github.com/xdamman/website-content">see an example here</a>):</p>
+  <pre>
+    - posts/
+        |- my-first-blog-post.md
+    - partials/
+        |- about.md
+    - themes/</pre>
+  <h4>2. Go to the settings of your github repo and add a webhook like this:</h4>
+      <img src="/img/setup-webhook.png" class="img-responsive img-rounded" />
+  <h4>3. Then click on "Test Hook" and refresh this page</h4>
+
+{{/alert}}

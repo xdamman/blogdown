@@ -1,0 +1,34 @@
+{
+  "name": "xdamman-website",
+  "main": "./src/public/js/main.js",
+  "version": "0.0.28",
+  "homepage": "https://github.com/xdamman/website",
+  "authors": [
+    "Xavier Damman <xdamman@gmail.com>"
+  ],
+  "description": "xavierdamman.com",
+  "keywords": [
+    "xdamman",
+    "xavierdamman",
+    "xavier",
+    "damman"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "cajon": "git@github.com:requirejs/cajon.git#~0.1.11",
+    "chai": "~1.8.1"
+  },
+  "dependencies": {
+    "bootstrap": "~3.0.2",
+    "requirejs": "~2.1.9",
+    "requirejs-domready": "~2.0.1",
+    "google-code-prettify": "~1.0.1"
+  }
+}

@@ -9,8 +9,9 @@ lib-cov
 *.gz
 *.swp
 
-src/public/lib/*
-dist
+core/frontend/lib/*
+core/frontend/dist
+content/*
 pids
 logs/
 results

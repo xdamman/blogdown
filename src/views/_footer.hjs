@@ -1,3 +1,0 @@
-<div class="container">
-  <p class="text-muted credit">Copyleft Xavier Damman (<a href="http://twitter.com/xdamman">@xdamman</a>) - please <a href="http://twitter.com/intent/tweet?via=xdamman&url=http://xdamman.com" class="share_twitter" target="_new">share</a> / <a href="https://github.com/xdamman/website-content/blob/master/posts/{{post.slug}}.md" data-event-name="edit" data-event-context="footer" data-event-value="{{post.permalink}}">edit</a> / redistribute</p>
-</div>
