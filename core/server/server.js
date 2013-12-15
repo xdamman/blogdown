@@ -1,6 +1,7 @@
 var express = require('express')
   , exec = require('child_process').exec
-  , utils = require('./src/lib/utils')
+  , utils = require('./lib/utils')
+  , _ = require('underscore')
   ;
 
 var server = express();
@@ -64,6 +65,8 @@ server.get('/webhooks/github', function(req, res) {
       server.error('exec git clone stderr: ', stderr);
       server.log('exec git clone stdout: ', stdout);
 
+      var config = require('../../content/blogdown');
+      _.extend(server.config, config);
       utils.writeJSON('./config.json', server.config);
       server.log("updating config.json");
       
@@ -104,18 +107,6 @@ server.get('/reset', function(req, res, next) {
   }
   else return next();
 });
-
-
-var loadPartial = function(partialfile, cb) {
-  if(utils.getFileExtension(partialfile) != 'md') return;
-
-  fs.readFile(server.config.partials_directory+'/'+partialfile, {encoding: 'utf8'}, function(err, data) {
-    if(err) throw err;
-    partials[partialfile] = marked(data);
-    if(cb) cb(partials[partialfile]);
-  });
-};
-
 
 server.listen(server.set('port'));
 server.log("Server listening on port "+server.set('port')+" in "+server.set('env')+" environment");

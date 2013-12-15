@@ -13,7 +13,7 @@ module.exports = function(server) {
   require('./assets')(server);
 
   server.configure('development', 'production', 'staging', function() {
-    server.controllers = require('../src/controllers')(server);
+    server.controllers = require('../controllers')(server);
   });
 
 }

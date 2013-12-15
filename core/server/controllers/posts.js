@@ -1,5 +1,4 @@
-var marked = require('marked')
-  , fs = require('fs')
+var fs = require('fs')
   , utils = require('../lib/utils')
   ;
   
