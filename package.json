@@ -7,7 +7,7 @@
     "express": "~3.4.5",
     "express-winston": "https://github.com/xdamman/express-winston/archive/master/tarball.tar.gz",
     "winston": "~0.7.2",
-    "showdown": "git://github.com/xdamman/showdown.git#master",
+    "showdown": "https://github.com/xdamman/showdown.git#master",
     "express3-handlebars": "~0.5.0",
     "underscore": "~1.5.2"
   },
@@ -43,19 +43,6 @@
     "start": "node core/server/server.js",
     "stop": "curl localhost/stop",
     "deploy": "node_modules/grunt-cli/bin/grunt deploy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/xdamman/website.git",
-    "content": {
-      "name": "website-content",
-      "url": "https://github.com/xdamman/website-content",
-      "private": false,
-      "owner": {
-        "name": "Xavier Damman",
-        "email": "xdamman@gmail.com"
-      }
-    }
   },
   "keywords": [
     "xdamman"

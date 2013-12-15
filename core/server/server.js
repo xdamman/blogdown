@@ -2,12 +2,13 @@ var express = require('express')
   , exec = require('child_process').exec
   , utils = require('./lib/utils')
   , _ = require('underscore')
+  , fs = require('fs')
   ;
 
 var server = express();
 server.config = require('../../config'); 
 
-if(!server.config.repository) {
+if(!server.config.repository || !fs.existsSync('../../content')) {
   // Setup mode
   server.set('env','setup');
 }
