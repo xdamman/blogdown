@@ -7,7 +7,7 @@
     "express": "~3.4.5",
     "express-winston": "https://github.com/xdamman/express-winston/archive/master/tarball.tar.gz",
     "winston": "~0.7.2",
-    "showdown": "https://github.com/xdamman/showdown.git#master",
+    "showdown": "https://github.com/xdamman/showdown/archive/master/tarball.tar.gz",
     "express3-handlebars": "~0.5.0",
     "underscore": "~1.5.2"
   },
