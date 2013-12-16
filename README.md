@@ -1,4 +1,21 @@
-# Personal website
+# BlogDown
+
+Github pages are great for a static website. But you can't really use them to power your blog. BlogDown is a NodeJS server that uses a github repo to render a blog. Your posts are markdown files within a `posts/` directory. That simple. 
+
+## Who is this for?
+
+By using github for storing the posts, it's very easy to manage who can write and edit them. That makes it great to use for your company engineering blog for example since all your engineers already have access to your repos. You don't need to create a Wordpress or Tumblr or whatever and deal with access rights.
+
+It's also great for a personal website. Especially if you write technical posts or if your friends are on github and you want to make it easy for them to collaborate with you on your next blog post. 
+
+## The stack
+
+It's a simple NodeJS server. There is no database. All the content is in a separate content repo. 
+
+## Installation
+
+	npm install blogdown
+	npm start
 
 A simple website using markdown files hosted on github for content.
 

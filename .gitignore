@@ -14,7 +14,6 @@ core/frontend/dist
 content/*
 config.json
 pids
-logs/
 results
 
 npm-debug.log
