@@ -1,18 +1,18 @@
-module.exports = function(server) {
+module.exports = function(host) {
 
   var themePath;
 
-  if(server.config.theme) {
-    themePath = server.set('basePath')+'/content/themes/'+server.config.theme;
+  if(host.config.repository.theme) {
+    themePath = host.set('basePath')+'/repositories/'+host.config.repository.path+'/themes/'+host.config.repository.theme;
   }
   else {
-    themePath = server.set('basePath')+'/themes/default';
+    themePath = host.set('basePath')+'/themes/default';
   }
 
   var paths = {
-      posts: server.set('basePath')+'/content/posts' 
-    , partials: server.set('basePath')+'/content/partials' 
-    , public: server.set('basePath')+'/content/public'
+      posts: host.set('basePath')+'/repositories/'+host.config.repository.path+'/posts' 
+    , partials: host.set('basePath')+'/repositories/'+host.config.repository.path+'/partials' 
+    , public: host.set('basePath')+'/repositories/'+host.config.repository.path+'/public'
     , theme: themePath
   };
 

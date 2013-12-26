@@ -25,7 +25,7 @@ module.exports = function(server) {
     var path = "/"+filename;
 
     if(routes[path]) return;
-    server.log("Setting up route "+path); 
+    server.log("Setting up route /"+server.config.repository.path+path); 
 
     routes[path] = { path: path, requests: 0, last_request: null };
     server.get('/'+filename, function(req, res) {
@@ -36,7 +36,8 @@ module.exports = function(server) {
           about: server.controllers.partials.get('about'),
           title: posts[postfile].title,
           post: posts[postfile],
-          template: posts[postfile].template
+          template: posts[postfile].template,
+          config: server.config
       });
     });
   };

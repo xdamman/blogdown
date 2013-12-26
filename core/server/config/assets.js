@@ -17,9 +17,6 @@ module.exports = function(server) {
     server.use(express.favicon(server.content.paths.theme+'/img/favicon.png'));
   }
 
-  server.use('/core/lib', express.static(server.set('basePath') + '/core/frontend/lib', {maxAge: server.set('staticMaxAge')}));
-  server.use('/core/js', express.static(server.set('basePath') + '/core/frontend/js', {maxAge: server.set('staticMaxAge')}));
-  server.use('/core/css', express.static(server.set('basePath') + '/core/frontend/css', {maxAge: server.set('staticMaxAge')}));
   server.use('/css', express.static(server.content.paths.theme+'/css', {maxAge: server.set('staticMaxAge')}));
   server.use('/js', express.static(server.content.paths.theme+'/js', {maxAge: server.set('staticMaxAge')}));
   server.use('/img', express.static(server.content.paths.theme+'/img', {maxAge: server.set('staticMaxAge')}));

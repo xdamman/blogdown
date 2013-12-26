@@ -3,16 +3,16 @@ var express = require('express')
   , winston = require('winston')
   ;
 
-module.exports = function(server) {
+module.exports = function(host) {
 
-  server.configure(function() {
+  host.configure(function() {
 
-    server.set('port',process.env.NODE_PORT || 3000);
-    server.set('base_url','//xdamman.com');
+    host.set('port',process.env.NODE_PORT || 3000);
+    host.set('base_url','//'+host.config.repository.host);
 
-    server.use(express.bodyParser());
+    host.use(express.bodyParser());
 
-    server.use(expressWinston.logger({
+    host.use(expressWinston.logger({
       transports: [
         new winston.transports.Console({
             json: false
@@ -23,9 +23,9 @@ module.exports = function(server) {
       , msg: "{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}"
     }));
 
-    server.use(server.router); 
+    host.use(host.router); 
 
-    require('./logger')(server);
+    require('./logger')(host);
 
   });
 

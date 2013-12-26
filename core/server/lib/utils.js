@@ -1,5 +1,7 @@
 var fs = require('fs')
   , showdown = require('showdown')
+  , exec = require('child_process').exec
+  , _ = require('underscore')
   ;
 
 module.exports = {
@@ -25,6 +27,47 @@ module.exports = {
 
   writeJSON: function(file, json) {
     fs.writeFileSync(file, JSON.stringify(json, null, 2));
+  },
+
+  getContributors: function(file, cb) {
+    this.getCommits(file, function(err, commits) {
+      if(err) return cb(err);
+      var contributors = {};
+      _.each(commits, function(commit) {
+        if(!contributors[commit.author]) {
+          contributors[commit.author] = commit;
+          contributors[commit.author].commits = 1;
+        }
+        else
+          contributors[commit.author].commits++;
+      });
+      return cb(err, _.toArray(contributors));
+    });
+
+  },
+
+  getCommits: function(file, cb) {
+    var filename = this.getFileName(file)+'.'+this.getFileExtension(file);
+    var cwd = file.replace(filename,'');
+
+    var cmd = 'cd '+cwd+' && git log --pretty=format:\'{"hash":"%h","date":"%ad","author":"%an","email":"%ae","subject":"%s","body":"%b"}\' -- '+filename;
+
+    exec(cmd, function(err, stdout, stderr) {
+      var lines = stdout.split('\n');
+      var json_str = '['+lines.join(',')+']';
+      
+      try {
+        var json = JSON.parse(json_str);
+        return cb(err, json);
+      }
+      catch(e) {
+        console.error("Unable to parse commits for "+filename, json_str,e);
+        return cb(new Error("Unable to parse json"));
+      }
+
+
+    });
+
   },
 
   // @PRE a markdown file with email like properties at the top
@@ -84,7 +127,11 @@ module.exports = {
       doc.updated_at = stat.mtime;
       doc.date = (doc.date) ? new Date(doc.date) : doc.created_at;
     
-      return cb(null, doc);
+      self.getContributors(file, function(err, contributors) {
+        doc.contributors = contributors;
+        console.log("Contributors for "+self.getFileName(file), contributors);
+        return cb(null, doc);
+      });
     });
 
   },

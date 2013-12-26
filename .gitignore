@@ -11,7 +11,7 @@ lib-cov
 
 core/frontend/lib/*
 core/frontend/dist
-content/*
+repositories/*
 config.json
 pids
 results
