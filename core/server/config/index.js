@@ -4,17 +4,19 @@
  * to the directories where your content lives.
  */
 
-module.exports = function(server) {
+module.exports = function(host) {
 
-  server.set('basePath', __dirname+'/../../..');
+  host.set('basePath', __dirname+'/../../..');
 
-  server.content = {};
-  server.content.paths = require('./paths')(server);
+  host.content = {};
+  host.content.paths = require('./paths')(host);
 
-  require('./express')(server);
-  require('./views')(server);
-  require('./assets')(server);
+  require('./express')(host);
+  require('./views')(host);
+  require('./assets')(host);
 
-  server.controllers = require('../controllers')(server);
+  host.env = {};
+  host.env[host.set('env')] = true;
+  host.controllers = require('../controllers')(host);
 
 }

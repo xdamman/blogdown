@@ -2,17 +2,17 @@ var fs = require('fs')
   , utils = require('../lib/utils')
   ;
   
-module.exports = function(server) {
+module.exports = function(host) {
 
   var posts = {}, routes = {};
 
   var loadPost = function(postfile, cb) {
     if(utils.getFileExtension(postfile) != 'md') return;
     cb = cb || function() {};
-    server.log("Loading '"+postfile+"'");
-    utils.loadDoc(server.content.paths.posts+'/'+postfile, function(err, doc) {
+    host.log("Loading '"+postfile+"'");
+    utils.loadDoc(host.content.paths.posts+'/'+postfile, function(err, doc) {
       if(err) return cb(err);
-      doc.permalink = server.set("base_url") + "/" + doc.slug;
+      doc.permalink = host.set("base_url") + "/" + doc.slug;
       posts[postfile] = doc; 
       buildRouteForPost(postfile);
       if(cb) cb(doc);
@@ -25,30 +25,31 @@ module.exports = function(server) {
     var path = "/"+filename;
 
     if(routes[path]) return;
-    server.log("Setting up route /"+server.config.repository.path+path); 
+    host.log("Setting up route /"+host.config.repository.path+path); 
 
     routes[path] = { path: path, requests: 0, last_request: null };
-    server.get('/'+filename, function(req, res) {
+    host.get('/'+filename, function(req, res) {
       routes[path].requests++;
       routes[path].last_request = new Date;
       res.set("Cache-Control","public, max-age=62");
       res.render('post', { 
-          about: server.controllers.partials.get('about'),
+          about: host.controllers.partials.get('about'),
           title: posts[postfile].title,
           post: posts[postfile],
           template: posts[postfile].template,
-          config: server.config
+          config: host.config,
+          env: host.env 
       });
     });
   };
 
   var init = function() {
 
-    fs.watch(server.content.paths.posts, function(event, file) {
+    fs.watch(host.content.paths.posts, function(event, file) {
       loadPost(file);
     });
 
-    var files = fs.readdirSync(server.content.paths.posts);
+    var files = fs.readdirSync(host.content.paths.posts);
 
     for(var i=0, len=files.length; i < len; i++) {
       loadPost(files[i]);

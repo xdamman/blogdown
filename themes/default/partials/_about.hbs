@@ -1,8 +1,10 @@
 <div class="about">
   <div class="media">
-    <div class="pull-left">
-      <img src="{{about.avatar}}" alt="{{about.name}}" class="media-object avatar" />
-    </div>
+    {{#if about.avatar}}
+      <div class="pull-left">
+        <img src="{{about.avatar}}" alt="{{about.name}}" class="media-object avatar" />
+      </div>
+    {{/if}}
     <div class="media-body">
       <h4 class="media-heading">About the author</h4>
       <p>{{{about.html}}}</p>

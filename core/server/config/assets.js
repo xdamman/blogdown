@@ -19,5 +19,6 @@ module.exports = function(server) {
 
   server.use('/css', express.static(server.content.paths.theme+'/css', {maxAge: server.set('staticMaxAge')}));
   server.use('/js', express.static(server.content.paths.theme+'/js', {maxAge: server.set('staticMaxAge')}));
+  server.use('/lib', express.static(server.content.paths.theme+'/lib', {maxAge: server.set('staticMaxAge')}));
   server.use('/img', express.static(server.content.paths.theme+'/img', {maxAge: server.set('staticMaxAge')}));
 };

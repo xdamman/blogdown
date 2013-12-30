@@ -8,8 +8,6 @@ server.set('basePath', __dirname+"/../..");
 
 server.config = require(server.set('basePath')+"/config.json");
 
-console.log("Config: ", server.config);
-
 server.use('/core/lib', express.static(server.set('basePath') + '/core/frontend/lib', {maxAge: server.set('staticMaxAge')}));
 server.use('/core/js', express.static(server.set('basePath') + '/core/frontend/js', {maxAge: server.set('staticMaxAge')}));
 server.use('/core/css', express.static(server.set('basePath') + '/core/frontend/css', {maxAge: server.set('staticMaxAge')}));
@@ -33,6 +31,7 @@ server.use(function(req, res, next) {
 
 // We start an expressjs server for each route and mount it on /repo.path
 _.each(server.config.repositories,function(repo) {
+  console.log("Instantiating new host for ", repo);
   var host = new Host(repo);
   server.use('/'+repo.path, host);
 });

@@ -129,7 +129,7 @@ module.exports = {
     
       self.getContributors(file, function(err, contributors) {
         doc.contributors = contributors;
-        console.log("Contributors for "+self.getFileName(file), contributors);
+        // console.log("Contributors for "+self.getFileName(file), contributors);
         return cb(null, doc);
       });
     });
