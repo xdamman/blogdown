@@ -12,11 +12,10 @@ server.use('/core/lib', express.static(server.set('basePath') + '/core/frontend/
 server.use('/core/js', express.static(server.set('basePath') + '/core/frontend/js', {maxAge: server.set('staticMaxAge')}));
 server.use('/core/css', express.static(server.set('basePath') + '/core/frontend/css', {maxAge: server.set('staticMaxAge')}));
 
-// Master website
-require('./server')(server);
-
 // Hosts
 server.use(function(req, res, next) {
+
+  if(req.url.match(/webhooks\/github/)) return next();
 
   _.each(server.config.repositories,function(repo) {
     // We make sure the request url ends with "/" since loading css and js is relative
@@ -28,6 +27,9 @@ server.use(function(req, res, next) {
   });
   next();
 });
+
+// Master website
+require('./server')(server);
 
 // We start an expressjs server for each route and mount it on /repo.path
 _.each(server.config.repositories,function(repo) {
