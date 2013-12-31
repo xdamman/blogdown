@@ -1,5 +1,6 @@
 var fs = require('fs')
   , utils = require('../lib/utils')
+  , libposts = require('../lib/posts')
   ;
   
 module.exports = function(server) {
@@ -10,7 +11,7 @@ module.exports = function(server) {
     if(utils.getFileExtension(partialfile) != 'md') return;
     server.log("Loading partial '"+partialfile+"'");
 
-    utils.loadDoc(server.content.paths.partials+'/'+partialfile, function(err, doc) {
+    libposts.loadDoc(server.content.paths.partials+'/'+partialfile, function(err, doc) {
       if(err) {
         server.error("loadPartial: "+server.content.paths.partials+'/'+partialfile, err);
         if(cb) return cb(err);

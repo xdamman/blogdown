@@ -1,0 +1,9 @@
+@media(max-width: 880px) {
+
+  body.home img.avatar.title {
+    float: right;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+
+}

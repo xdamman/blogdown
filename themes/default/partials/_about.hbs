@@ -1,4 +1,17 @@
 <div class="about">
+  {{#if post.author.description}}
+  <div class="media">
+    {{#if post.author.avatar}}
+      <div class="pull-left">
+        <img src="{{post.author.avatar}}" alt="{{post.author.name}}" class="media-object avatar" />
+      </div>
+    {{/if}}
+    <div class="media-body">
+      <h4 class="media-heading">About the author</h4>
+      <p>{{{post.author.description}}}</p>
+    </div>
+  </div>
+  {{/if}}
   <div class="media">
     {{#if about.avatar}}
       <div class="pull-left">
@@ -6,8 +19,8 @@
       </div>
     {{/if}}
     <div class="media-body">
-      <h4 class="media-heading">About the author</h4>
-      <p>{{{about.html}}}</p>
+      <h4 class="media-heading">{{about.title}}</h4>
+      <p>{{{about.lead}}} {{{about.html}}}</p>
     </div>
   </div>
 </div>

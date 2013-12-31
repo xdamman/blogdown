@@ -19,6 +19,12 @@ body.page .lead {
   margin-top: 20px;
 }
 
+body.home img.avatar.title {
+  float: left;
+  margin-left: -48px;
+  margin-top: 20px;
+}
+
 body.home h4 {
   margin: 18px 0px 6px 0px;
 }
@@ -45,9 +51,9 @@ body.page .post-item p {
   min-height: 100%;
   height: auto;
  /* Negative indent footer by its height */
-  margin: 0 auto -25px;
+  margin: 0 auto -35px;
  /* Pad bottom by footer height */
-  padding: 0 0 25px;
+  padding: 0 0 55px;
 }
 
 #wrap > .container {
@@ -56,7 +62,7 @@ body.page .post-item p {
 
 /* Set the fixed height of the footer here */
 #footer {
-  min-height: 25px;
+  min-height: 35px;
   width: 100%;
   background-color: #f5f5f5;
 }
@@ -138,8 +144,12 @@ p.lead {
 }
 
 .container .credit {
-  line-height: 25px;
-  font-size:10px;
+  line-height: 35px;
+  font-size:12px;
+}
+
+.container p.credit {
+  margin: 0;
 }
  
 .twitter-tweet {
@@ -147,10 +157,37 @@ p.lead {
 }
 
 .avatar {
+  max-width: 48px;
   border-radius: 50%;
 }
 
+.poweredby {
+  font-size: 10px;
+}
+
+/* tables */
 table p {
   margin: 0;
   padding: 0px;
+  font-size: 12px;
+}
+
+table th {
+  font-size: 12px;
+}
+
+
+/* coding blocks */
+.prettyprint.linenums {
+  margin: 20px 0px;
+  padding: 0px;
+  box-shadow: inset 30px 0 0 #fbfbfc, inset 31px 0 0 #ececf0;
+}
+
+pre ol li {
+  font-size: 12px;
+}
+
+pre ol.linenums li {
+  padding-left: 2px;
 }

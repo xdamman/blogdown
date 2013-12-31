@@ -1,6 +1,8 @@
 var expect = require('chai').expect;
 var lib = require('../../../core/server/lib/posts.js');
 
+var email = "xdamman@gmail.com";
+
 describe("parser", function() {
 
   it("parses the parameters in the head", function(done) {
@@ -10,7 +12,8 @@ describe("parser", function() {
       expect(doc.slug).to.equal('post');
       expect(doc.title).to.equal('This is the title');
       expect(doc.lead).to.equal('And this is the lead');
-      console.log(doc);
+      expect(doc.author.email).to.equal(email);
+      expect(doc.author.twitter.username).to.equal('xdamman');
       done();
     });
   });

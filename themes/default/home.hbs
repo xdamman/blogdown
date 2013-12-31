@@ -1,6 +1,9 @@
+{{#if about.avatar}}
+  <img src="{{about.avatar}}" class="avatar title" />
+{{/if}}
 <h1>{{config.repository.title}}</h1>
 <p class="lead">{{config.repository.description}}</p>
-<p class="lead">{{{about.html}}}</p>
+<p class="lead">{{{about.lead}}}</p>
 
 {{^about}}
   <div class="alert alert-info">

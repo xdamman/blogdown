@@ -1,5 +1,6 @@
 var fs = require('fs')
   , utils = require('../lib/utils')
+  , libposts = require('../lib/posts')
   ;
   
 module.exports = function(host) {
@@ -10,7 +11,7 @@ module.exports = function(host) {
     if(utils.getFileExtension(postfile) != 'md') return;
     cb = cb || function() {};
     host.log("Loading '"+postfile+"'");
-    utils.loadDoc(host.content.paths.posts+'/'+postfile, function(err, doc) {
+    libposts.loadDoc(host.content.paths.posts+'/'+postfile, function(err, doc) {
       if(err) return cb(err);
       doc.permalink = host.set("base_url") + "/" + doc.slug;
       posts[postfile] = doc; 

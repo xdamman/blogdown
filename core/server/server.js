@@ -37,6 +37,7 @@ module.exports = function(server) {
     try {
       var payload = JSON.parse(req.body.payload);
     } catch(e) {
+      /*
       var payload = {
           repository: {
               name: "website-content"
@@ -48,7 +49,7 @@ module.exports = function(server) {
               }
           }
       };
-      /*
+      */
       var payload = {
           repository: {
               name: "engineering-blog"
@@ -60,7 +61,6 @@ module.exports = function(server) {
               }
           }
       }
-      */
     }
 
     var repo = payload.repository;

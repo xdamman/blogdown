@@ -1,5 +1,6 @@
 var fs = require('fs')
   , utils = require('./utils')
+  , libcontributors = require('./contributors')
   , showdown = require('showdown')
   , exec = require('child_process').exec
   , request = require('request')
@@ -14,15 +15,18 @@ module.exports = {
       if(err) return cb(err);
       var contributors = {};
       _.each(commits, function(commit) {
-        if(!contributors[commit.author]) {
-          contributors[commit.author] = commit;
-          contributors[commit.author].commits = 1;
+        var contributor = {
+            name: commit.author
+          , email: commit.email
+        };
 
-          var hash = crypto.createHash('md5').update(commit.email).digest('hex');
-          contributors[commit.author].avatar = '//gravatar.com/avatar/'+hash;
+        if(!contributors[commit.email]) {
+          contributors[commit.email] = contributor;
+          contributors[commit.email].commits = 1;
+          contributors[commit.email].avatar = '//gravatar.com/avatar/'+utils.getHash(commit.email);
         }
         else
-          contributors[commit.author].commits++;
+          contributors[commit.email].commits++;
       });
       return cb(err, _.toArray(contributors));
     });
@@ -34,16 +38,30 @@ module.exports = {
     if(!contributors || contributors.length < 1) return cb();
 
     var author = contributors[0];
-    var api_call = "https://api.github.com/search/users?q="+author.email+"%20in:email";
-    var options = { url: api_call, headers: { 'User-Agent': 'Blogdown' } };
-    console.log("Calling "+api_call);
-    request(options, function(err, res, body) {
-      res = JSON.parse(body);
-      if(res.total_count==1)
-        author.github = res.items[0];
-    });
-    cb(null, {});
+    if(author.email)
+      libcontributors.fetchGravatarProfile(author.email, function(err, profile) {
 
+        author.username = profile.preferredUsername;
+        author.description = profile.aboutMe;
+        author.displayName = profile.displayName;
+        author.location = profile.currentLocation;
+
+        for(var i=0; i<profile.accounts.length;i++) {
+          var account = profile.accounts[i];
+          author[account.shortname] = { username: account.username, url: account.url, displayName: account.display };
+          author.username = author.username || account.username;
+          author.url = author.url || account.url;
+          author.displayName = author.displayName || account.display;
+        }
+        if(author.twitter) {
+          author.displayName = author.twitter.displayName;
+          author.url = author.twitter.url;
+        }
+
+        return cb(null, author);
+      });
+    else
+      cb(null, author);
   },
 
   getCommits: function(file, cb) {
