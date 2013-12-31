@@ -1,6 +1,6 @@
 {
   "name": "blogdown",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "Use a github repo to power your blog",
   "main": "core/server/server.js",
   "dependencies": {
@@ -41,7 +41,7 @@
   "scripts": {
     "install": "node_modules/bower/bin/bower install",
     "test": "node_modules/karma/bin/karma run",
-    "start": "node core/server/server.js",
+    "start": "node core/server/index.js",
     "stop": "curl localhost/stop",
     "deploy": "node_modules/grunt-cli/bin/grunt deploy"
   },

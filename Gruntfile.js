@@ -3,10 +3,19 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     bumper: {
-      options: {
-          files: ['package.json','bower.json']
-        , pushTo: 'deploy'
-        , runTasks: false 
+      production: {
+        options: {
+            files: ['package.json','bower.json']
+          , pushTo: 'deploy'
+          , runTasks: false 
+        }
+      },
+      staging: {
+        options: {
+            files: ['package.json','bower.json']
+          , pushTo: 'staging'
+          , runTasks: false 
+        }
       }
     },
     shell: {
@@ -22,5 +31,6 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('deploy', ['bumper']);
+  grunt.registerTask('default',[]);
 
 };
