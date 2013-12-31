@@ -10,8 +10,7 @@
     "showdown": "https://github.com/xdamman/showdown/archive/master/tarball.tar.gz",
     "express3-handlebars": "~0.5.0",
     "underscore": "~1.5.2",
-    "request": "~2.30.0",
-    "node-request-caching": "0.0.1"
+    "request": "~2.30.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
