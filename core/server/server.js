@@ -1,12 +1,14 @@
 var fs = require('fs')
   , _ = require('underscore')
   , exec = require('child_process').exec
+  , express = require('express')
   , utils = require('./lib/utils')
   ;
 
 module.exports = function(server) {
 
   server.set('port', process.env.PORT || process.env.NODE_PORT || 3000);
+  server.use(express.bodyParser());
 
   require('./config/views')(server);
 
