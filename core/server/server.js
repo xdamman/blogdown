@@ -6,7 +6,7 @@ var fs = require('fs')
 
 module.exports = function(server) {
 
-  server.set('port', process.env.PORT || 3000);
+  server.set('port', process.env.PORT || process.env.NODE_PORT || 3000);
 
   require('./config/views')(server);
 
