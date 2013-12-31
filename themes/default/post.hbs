@@ -2,7 +2,7 @@
   <div class="post">
     <h1 class="title">{{{post.title}}}</h1>
     <div class="byline">
-      <span class="twitter_username"><a href="http://twitter.com/{{about.twitter}}" data-event-name="twitter_profile" data-event-value="{{about.twitter}}" data-event-context="byline">{{about.twitter}}</a></span> | 
+      <span class="author"><a href="{{config.base_url}}/{{post.author.username}}">{{post.author.name}}</a></span> | 
       <span class="timeago" data-date="{{post.date}}"></span>
     </div>
     <p class="lead">{{{post.lead}}}</p>

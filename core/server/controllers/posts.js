@@ -32,6 +32,7 @@ module.exports = function(host) {
       routes[path].requests++;
       routes[path].last_request = new Date;
       res.set("Cache-Control","public, max-age=62");
+      console.log("post: ", posts[postfile].contributors);
       res.render('post', { 
           about: host.controllers.partials.get('about'),
           title: posts[postfile].title,

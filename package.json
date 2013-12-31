@@ -1,6 +1,6 @@
 {
   "name": "blogdown",
-  "version": "0.0.28",
+  "version": "0.1.0",
   "description": "Use a github repo to power your blog",
   "main": "core/server/server.js",
   "dependencies": {
@@ -9,7 +9,9 @@
     "winston": "~0.7.2",
     "showdown": "https://github.com/xdamman/showdown/archive/master/tarball.tar.gz",
     "express3-handlebars": "~0.5.0",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "request": "~2.30.0",
+    "node-request-caching": "0.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -33,12 +35,12 @@
     "karma-chai": "0.0.2",
     "grunt-cli": "~0.1.11",
     "grunt-bumper": "~1.0.0",
-    "grunt-asset-cachebuster": "~0.1.1",
     "bower": "~1.2.7",
-    "grunt-shell": "~0.6.1"
+    "grunt-shell": "~0.6.1",
+    "chai": "~1.8.1"
   },
   "scripts": {
-    "install": "node_modules/bower/bin/bower install && node_modules/grunt-cli/bin/grunt",
+    "install": "node_modules/bower/bin/bower install",
     "test": "node_modules/karma/bin/karma run",
     "start": "node core/server/server.js",
     "stop": "curl localhost/stop",
