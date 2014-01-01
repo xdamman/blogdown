@@ -1,6 +1,6 @@
 {
   "name": "blogdown",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Use a github repo to power your blog",
   "main": "core/server/server.js",
   "dependencies": {
