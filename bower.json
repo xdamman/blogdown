@@ -22,7 +22,7 @@
     "tests"
   ],
   "devDependencies": {
-    "cajon": "git@github.com:requirejs/cajon.git#~0.1.11",
+    "cajon": "https://github.com/requirejs/cajon.git#~0.1.11",
     "chai": "~1.8.1"
   },
   "dependencies": {
