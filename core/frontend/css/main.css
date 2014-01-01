@@ -1,0 +1,193 @@
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+    height: 100%;
+    width: 100%; 
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+a {
+  color: #069;
+}
+
+body.page .lead {
+  margin-top: 20px;
+}
+
+body.home img.avatar.title {
+  float: left;
+  margin-left: -48px;
+  margin-top: 20px;
+}
+
+body.home h4 {
+  margin: 18px 0px 6px 0px;
+}
+
+body.home .link_home {
+  display: none;
+}
+
+body.page h4 a {
+}
+
+.post-item .timeago {
+  font-weight: normal;
+  font-size: 11px;
+  color: #555;
+}
+
+body.page .post-item p {
+  font-size: 14px;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+ /* Negative indent footer by its height */
+  margin: 0 auto -35px;
+ /* Pad bottom by footer height */
+  padding: 0 0 55px;
+}
+
+#wrap > .container {
+  background: rgba(255,255,255,0.5);
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  min-height: 35px;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+  width: auto;
+  max-width: 660px;
+  padding: 0;
+}
+
+.list-group:first-of-type {
+  margin-top: 15px;
+}
+
+
+img {
+  max-width: 100%;
+  align:center;
+}
+
+video {
+  margin: 20px 0px;
+  width: 100%;
+  max-width: 650px;
+}
+
+h1, h2, h3, h4, p {
+  padding: 0 15px;
+  line-height: 1.3;
+}
+
+p, li {
+  font-size: 16px;
+  color: rgb(50,50,50);
+  line-height: 1.5;
+}
+
+p.lead {
+  font-size: 18px;
+}
+
+.about {
+  margin:30px 15px;
+}
+
+.about h1, .about h2, .about h3, .about h4 {
+  padding: 0px;
+}
+.about p {
+  padding:0px;
+  font-size: 14px;
+}
+
+.post h1 {
+  font-size: 24px;
+  margin-bottom: 22px;
+  margin-top: 33px;
+}
+
+.post h2 {
+  font-size: 18px;
+}
+
+.post h3 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.post .byline {
+  padding: 0 15px;
+  margin-top: -20px;
+  margin-bottom: 15px;
+  color: #888;
+}
+
+.container .credit {
+  line-height: 35px;
+  font-size:12px;
+}
+
+.container p.credit {
+  margin: 0;
+}
+ 
+.twitter-tweet {
+  margin: 20px auto !important;
+}
+
+.avatar {
+  max-width: 48px;
+  border-radius: 50%;
+}
+
+.poweredby {
+  font-size: 10px;
+}
+
+/* tables */
+table p {
+  margin: 0;
+  padding: 0px;
+  font-size: 12px;
+}
+
+table th {
+  font-size: 12px;
+}
+
+
+/* coding blocks */
+.prettyprint.linenums {
+  margin: 20px 0px;
+  padding: 0px;
+  box-shadow: inset 30px 0 0 #fbfbfc, inset 31px 0 0 #ececf0;
+}
+
+pre ol li {
+  font-size: 12px;
+}
+
+pre ol.linenums li {
+  padding-left: 2px;
+}
