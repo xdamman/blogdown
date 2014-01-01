@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>{{#if title}}{{title}} - {{/if}}{{config.repository.title}} ◉ Blogdown</title>
+
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+
+    <!-- build:remove -->
+    <link rel="stylesheet" href="/core/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/loading-animation.css" />
+    <link rel="stylesheet" href="/core/css/prettify.css" />
+    <link rel="stylesheet" href="css/setup.css" />
+    <!-- /build -->
+
+    <style>
+      <!-- build:include ../../dist/css/compiled.min.css -->
+      <!-- /build -->
+    </style>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
+
+  <body class="{{template}}">
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Begin page content -->
+      <div class="container">
+        {{{body}}}
+      </div>
+    </div>
+
+    <div id="footer">
+      {{>_footer}}
+    </div>
+
+    <!-- build:js /js/optimized.min.js -->
+    <script src="/core/lib/requirejs/require.js"></script>
+    <script src="/core/js/requirejs.conf.js"></script>
+    <script src="js/main.js"></script>
+    <!-- /build -->
+
+  </body>
+</html>
+

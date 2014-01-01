@@ -3,14 +3,30 @@ var fs = require('fs')
   , exec = require('child_process').exec
   , express = require('express')
   , utils = require('./lib/utils')
+  , exphbs  = require('express3-handlebars')
   ;
 
 module.exports = function(server) {
 
+  /* -- config -- */
   server.set('port', process.env.PORT || process.env.NODE_PORT || 3000);
+  server.set('basePath', __dirname+'/../..');
+  server.set('views', server.set('basePath')+'/core/frontend');
   server.use(express.bodyParser());
 
-  require('./config/views')(server);
+  var hbs = exphbs.create({
+      extname: '.hbs'
+    , layoutsDir: server.set('views')
+    , partialsDir: server.set('views')+'/partials'
+    , defaultLayout: 'layout'
+  });
+
+  server.set('view engine', 'hbs');
+  server.engine('hbs', hbs.engine);
+
+  server.use('/css', express.static(server.set('views')+'/css', {maxAge: server.set('staticMaxAge')}));
+  server.use('/img', express.static(server.set('views')+'/img', {maxAge: server.set('staticMaxAge')}));
+  /* -- /config -- */
 
   server.get('/', function(req, res) {
     // server.alert = {class: "info", msg: "Cloning the repository - please wait"};

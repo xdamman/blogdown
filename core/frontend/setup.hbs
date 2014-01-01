@@ -26,11 +26,23 @@
   <pre>
     - posts/
         |- my-first-blog-post.md
-    - partials/
+    - partials/ (optional)
         |- about.md
-    - themes/</pre>
+    - themes/ (optional)
+        | - mytheme/
+             | - css/
+             | - js/
+             | - img/
+             | - layout.hbs (handlebar layout)
+             | - home.hbs (template for the homepage)
+             | - post.hbs (template for the post page)
+             | - partials/
+                  | - _footer.hbs (template for the footer)</pre>
+
   <h4>2. Go to the settings of your github repo and add a webhook like this:</h4>
-      <img src="/img/setup-webhook.png" class="img-responsive img-rounded" />
+    <div class="img_container">
+      <img src="/img/setup-webhook.png" class="img-responsive" />
+    </div>
   <h4>3. Then click on "Test Hook" and "Update settings"  and refresh this page</h4>
 
 {{/alert}}

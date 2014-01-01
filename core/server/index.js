@@ -1,4 +1,5 @@
 var express = require('express')
+  , fs = require('fs')
   , _ = require('underscore')
   , Host = require('./host')
   ;
@@ -6,7 +7,10 @@ var express = require('express')
 var server = express();
 server.set('basePath', __dirname+"/../..");
 
-server.config = require(server.set('basePath')+"/config.json");
+if(fs.existsSync(server.set('basePath')+"/config.json"))
+  server.config = require(server.set('basePath')+"/config.json");
+else
+  server.config = {};
 
 server.use('/core/lib', express.static(server.set('basePath') + '/core/frontend/lib', {maxAge: server.set('staticMaxAge')}));
 server.use('/core/js', express.static(server.set('basePath') + '/core/frontend/js', {maxAge: server.set('staticMaxAge')}));
