@@ -41,21 +41,25 @@ module.exports = {
     if(author.email)
       libcontributors.fetchGravatarProfile(author.email, function(err, profile) {
 
+        if(err) return cb(err);
+
         author.username = profile.preferredUsername;
         author.description = profile.aboutMe;
         author.displayName = profile.displayName;
         author.location = profile.currentLocation;
 
-        for(var i=0; i<profile.accounts.length;i++) {
-          var account = profile.accounts[i];
-          author[account.shortname] = { username: account.username, url: account.url, displayName: account.display };
-          author.username = author.username || account.username;
-          author.url = author.url || account.url;
-          author.displayName = author.displayName || account.display;
-        }
-        if(author.twitter) {
-          author.displayName = author.twitter.displayName;
-          author.url = author.twitter.url;
+        if(profile.accounts && profile.accounts.length > 0) {
+          for(var i=0; i<profile.accounts.length;i++) {
+            var account = profile.accounts[i];
+            author[account.shortname] = { username: account.username, url: account.url, displayName: account.display };
+            author.username = author.username || account.username;
+            author.url = author.url || account.url;
+            author.displayName = author.displayName || account.display;
+          }
+          if(author.twitter) {
+            author.displayName = author.twitter.displayName;
+            author.url = author.twitter.url;
+          }
         }
 
         return cb(null, author);

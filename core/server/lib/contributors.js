@@ -28,8 +28,13 @@ module.exports = {
     var options = { url: api_call, headers: { 'User-Agent': 'Blogdown' } };
     request(options, function(err, res, body) {
       if(err) return cb(err);
-      res = JSON.parse(body);
-      if(res.entry)
+      try {
+        res = JSON.parse(body);
+      } catch(e) {
+        console.error("fetchGravatarProfile: Couldn't parse response JSON ", body, e); 
+        return cb(e);
+      }
+      if(res.entry && res.entry.length > 0)
         gravatarProfile = res.entry[0];
 
       return cb(null, gravatarProfile);
