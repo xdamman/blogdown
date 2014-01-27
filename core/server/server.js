@@ -40,13 +40,13 @@ module.exports = function(server) {
     var configFile = server.set('basePath')+'/repositories/'+repo.path+'/blogdown';
     if(fs.existsSync(configFile+'.json')) {
       var config = require(configFile);
-      _.extend(repo, config);
+      _.extend(config, repo);
     }
     else {
       console.log("File "+configFile+".json does not exist");
     }
     server.config.repositories = server.config.repositories || {};
-    server.config.repositories[repo.path] = repo;
+    server.config.repositories[repo.path] = config;
     utils.writeJSON('./config.json', server.config);
     console.log("updating config.json");
   }
@@ -55,11 +55,10 @@ module.exports = function(server) {
     try {
       var payload = JSON.parse(req.body.payload);
     } catch(e) {
-      /*
       var payload = {
           repository: {
-              name: "website-content"
-            , url: "https://github.com/xdamman/website-content"
+              name: "blog"
+            , url: "https://github.com/xdamman/blog"
             , private: false
             , owner: {
                   name: "Xavier Damman"
@@ -67,7 +66,7 @@ module.exports = function(server) {
               }
           }
       };
-      */
+      /*
       var payload = {
           repository: {
               name: "engineering-blog"
@@ -79,6 +78,7 @@ module.exports = function(server) {
               }
           }
       }
+      */
     }
 
     var repo = payload.repository;
