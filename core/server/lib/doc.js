@@ -120,6 +120,14 @@ module.exports = {
       doc.date = (doc.date) ? new Date(doc.date) : doc.created_at;
 
       doc.draft = (doc.draft == 'true') ? true : false;
+
+      if(doc.tags) {
+        doc.tags = doc.tags.replace(/ /g,',').replace(/#/g,'');
+        doc.tags = doc.tags.split(',');
+      }
+      else {
+        doc.tags = [];
+      }
     
       return cb(null, doc);
     });
