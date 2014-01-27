@@ -2,7 +2,7 @@ var utils = require('./utils')
   , request = require('request')
   ;
 
-module.exports = {
+module.exports = { 
 
   fetchGithubInfo: function(email, cb) {
     var githubProfile = {};
@@ -40,4 +40,4 @@ module.exports = {
       return cb(null, gravatarProfile);
     });
   }
-}
+};

@@ -12,6 +12,7 @@ module.exports = function(host) {
   var paths = {
       posts: host.set('basePath')+'/repositories/'+host.config.repository.path+'/posts' 
     , partials: host.set('basePath')+'/repositories/'+host.config.repository.path+'/partials' 
+    , pages: host.set('basePath')+'/repositories/'+host.config.repository.path+'/pages' 
     , public: host.set('basePath')+'/repositories/'+host.config.repository.path+'/public'
     , theme: themePath
   };

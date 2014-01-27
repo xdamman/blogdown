@@ -1,19 +1,19 @@
 var fs = require('fs')
   , utils = require('../lib/utils')
-  , libposts = require('../lib/posts')
+  , libdoc = require('../lib/doc')
   ;
   
-module.exports = function(server) {
+module.exports = function(host) {
 
   var partials = {};
 
   var loadPartial = function(partialfile, cb) {
     if(utils.getFileExtension(partialfile) != 'md') return;
-    server.log("Loading partial '"+partialfile+"'");
+    host.log("Loading partial '"+partialfile+"'");
 
-    libposts.loadDoc(server.content.paths.partials+'/'+partialfile, function(err, doc) {
+    libdoc.loadDoc(host.content.paths.partials+'/'+partialfile, function(err, doc) {
       if(err) {
-        server.error("loadPartial: "+server.content.paths.partials+'/'+partialfile, err);
+        host.error("loadPartial: "+host.content.paths.partials+'/'+partialfile, err);
         if(cb) return cb(err);
       }
       doc.html = utils.stripTags(doc.html, "<a><b><u><i>");
@@ -22,13 +22,17 @@ module.exports = function(server) {
     });
   };
 
-  var init = function() {
+  var init = function(cb) {
 
-    fs.watch(server.content.paths.partials, function(event, file) {
+    var cb = cb || function() {};
+
+    if(!fs.existsSync(host.content.paths.partials)) return cb(new Error(host.content.paths.partials + ' does not exist'));
+
+    fs.watch(host.content.paths.partials, function(event, file) {
       loadPartial(file);
     });
 
-    var files = fs.readdirSync(server.content.paths.partials);
+    var files = fs.readdirSync(host.content.paths.partials);
 
     for(var i=0, len=files.length; i < len; i++) {
       loadPartial(files[i]);

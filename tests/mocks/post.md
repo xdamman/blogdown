@@ -3,6 +3,8 @@ draft: true
 
 # This is the title
 
-And this is the lead
+![image caption](imgsrc)
+
+The first text paragraph should be the lead
 
 And this is the body of the post

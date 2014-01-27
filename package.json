@@ -10,7 +10,8 @@
     "showdown": "https://github.com/xdamman/showdown/archive/master/tarball.tar.gz",
     "express3-handlebars": "~0.5.0",
     "underscore": "~1.5.2",
-    "request": "~2.30.0"
+    "request": "~2.30.0",
+    "async": "~0.2.10"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -40,7 +41,7 @@
   },
   "scripts": {
     "install": "node_modules/bower/bin/bower install",
-    "test": "node_modules/karma/bin/karma run",
+    "test": "node_modules/mocha/bin/mocha tests/server/*",
     "start": "node core/server/index.js",
     "stop": "curl localhost/stop",
     "deploy": "node_modules/grunt-cli/bin/grunt deploy"
