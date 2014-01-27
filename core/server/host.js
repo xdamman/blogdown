@@ -51,7 +51,7 @@ module.exports = function(repo) {
         , description: post.html
         , url: post.permalink
         , categories: post.tags
-        , author: post.author.name
+        , author: post.author.displayName
         , date: post.created_at
       });
     });

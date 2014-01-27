@@ -29,7 +29,7 @@ module.exports = function(host, cb) {
           });
         }, function(err) {
           if(err) console.error("Error while asynchronously loading contributors", err);
-          doc.author = doc.contributors[0];
+          doc.author = doc.contributors[0] || {};
           doc.contributors = doc.contributors.slice(1);
           host.posts[utils.getFileName(postfile)] = doc; 
           buildRouteForPost(postfile);
