@@ -36,7 +36,7 @@ module.exports = {
     var filename = utils.getFileName(file)+'.'+utils.getFileExtension(file);
     var cwd = file.replace(filename,'');
 
-    var cmd = 'git log --pretty=format:\'{"hash":"%h","date":"%ad","author":"%an","email":"%ae","subject":"%s","body":"%b"}\' -- '+filename;
+    var cmd = 'git log --pretty=format:\'%h||%ad||%an||%ae||%s||%b\' -- '+filename;
 
     if(!fs.existsSync(file)) {
       var error = "File "+file+" does not exist";
@@ -46,18 +46,34 @@ module.exports = {
 
     exec(cmd, {timeout: 500, cwd: cwd}, function(err, stdout, stderr) {
 
-      var lines = stdout.split('\n');
-      var json_str = '['+lines.join(',')+']';
-      
-      try {
-        var json = JSON.parse(json_str);
+      if(err) {
+        console.error(err);
+        return cb(err);
       }
-      catch(e) {
-        console.error("Unable to parse commits for "+filename, json_str,e);
-        return cb(new Error("Unable to parse json"));
+      if(stderr) {
+        console.error("stderr: ", stderr);
+        return cb(stderr);
       }
 
-      return cb(err, json);
+      var lines = stdout.split('\n');
+
+      var arr = [];
+      for(var i=0;i<lines.length;i++) {
+        var l = lines[i];
+        var tokens = l.split('||');
+        if(tokens.length > 5) {
+          arr.push({
+              hash: tokens[0]
+            , date: tokens[1]
+            , author: tokens[2]
+            , email: tokens[3]
+            , subject: tokens[4]
+            , body: tokens[5]
+          });
+        }
+      }
+
+      return cb(err, arr);
 
     });
   },
@@ -105,9 +121,10 @@ module.exports = {
 
       // Get lead (first text paragraph after title)
       if(doc.title && !doc.lead) {
-        var paragraphs = doc.html.match(/^<p[^>]*>(.*)(<\/p>)$/gm);
+        var paragraphs = doc.html.match(/<p[^>]*>(.*)(<\/p>)$/gm);
+        var paragraphs = doc.html.match(/<p(>|\s+[^>]*>)(.|\n)*?<\/p>/gm);
         if(paragraphs) {
-          doc.lead = paragraphs[0].replace(/<p[^>]*>(.*)<\/p>/,'$1');
+          doc.lead = paragraphs[0].replace(/<p(>|\s+[^>]*>)((.|\n)*)?<\/p>/m,'$2');
           doc.html = doc.html.replace(paragraphs[0],'<p class="lead">'+doc.lead+'</p>');
         }
       }

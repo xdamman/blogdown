@@ -16,6 +16,14 @@ describe("parser", function() {
     });
   });
 
+  it("parses the lead", function(done) {
+    lib.loadDoc(__dirname+'/../../mocks/teepiic-shared-photo-album.md', function(err, doc) {
+      expect(err).to.not.exist;
+      expect(doc.lead).to.equal('This is the third blog post in my <a href="Brussels-office-hours-January-2014">office hours series</a>.\nThis one is about Severine Bourlet. She wants to solve the problem of gathering in one place photos of an event.')
+      done();
+    });
+  });
+
   it("parses a large post with image", function(done) {
 
     lib.loadDoc(__dirname+'/../../mocks/large-post.md', function(err, doc) {
@@ -39,7 +47,6 @@ describe("parser", function() {
   it('get the commits', function(done) {
     lib.getCommits(__dirname+'/../../mocks/post.md', function(err, commits) {
       expect(err).to.not.exist;
-      expect(commits.length).to.equal(1);
       expect(commits[0].hash).to.exist;
       done();
     });

@@ -20,6 +20,10 @@ module.exports = function(host, cb) {
       doc.permalink = host.set("base_url") + "/" + doc.slug;
       doc.contributors = [];
       libdoc.getContributors(postfilepath, function(err, contributors) {
+        if(err) {
+          console.error('Error trying to get contributors for '+postfile,err);
+          return cb(err);
+        }
         // We load asynchronously the profile for all contributors
         async.each(contributors, function(contributor, done) {
           if(!contributor || !contributor.email) done();
@@ -90,10 +94,12 @@ module.exports = function(host, cb) {
     latest: function(max) {
       var posts_array = [];
       for(var i in host.posts) {
-        if(!host.posts[i].draft && !host.posts[i].hidden)
-          posts_array.push(host.posts[i]);
+        if(!host.posts[i].draft && !host.posts[i].hidden) {
+          var post = host.posts[i];
+          posts_array.push(post);
+        }
       }
-      posts_array = posts_array.sort(function(a,b) { return (a.date<b.date); });
+      posts_array = posts_array.sort(function(a,b) { return (a.date<b.date) ? 1 : -1; });
       return posts_array.slice(0,max);
     },
 

@@ -23,13 +23,17 @@ server.use(function(req, res, next) {
 
   _.each(server.config.repositories,function(repo) {
     // We make sure the request url ends with "/" since loading css and js is relative
-    if(req.url.match(new RegExp('/'+repo.path+'$','i'))) return res.redirect(req.url+'/');
+    if(req.url.match(new RegExp('/'+repo.path+'$','i'))) {
+      return res.redirect(req.url+'/');
+    }
 
     // We route the request to the appropriate host
     if(req.header('host').match(new RegExp(repo.host+'(:[0-9]+)?','i')))
       req.url = '/'+repo.path+req.url;
   });
-  next();
+
+  if(!res.headerSent)
+    next();
 });
 
 // Master website
