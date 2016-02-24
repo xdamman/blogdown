@@ -1,5 +1,7 @@
 # ◉ BlogDown
 
+[![Join the chat at https://gitter.im/xdamman/blogdown](https://badges.gitter.im/xdamman/blogdown.svg)](https://gitter.im/xdamman/blogdown?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Github pages are great for a static website. But you can't really use them to power your blog. BlogDown is a NodeJS server that uses a github repo to render a blog. Your posts are markdown files within a `posts/` directory. That simple. 
 
 ## Who is this for?
